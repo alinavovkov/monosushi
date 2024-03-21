@@ -1,0 +1,116 @@
+$font-main: Rotonda;
+$color-accent: #b5d8f7;
+$color-dark: #252525;
+$color-light: white;
+
+$transparent: transparent;
+$primary-color: #99cde2;
+$secondary-color: #5d855d;
+$grey: grey;
+
+* {
+    font-family: $font-main;
+}
+
+.top-discounts {
+    width: 100%;
+    height: 20%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+hr {
+    width: 230px;
+    height: 5px;
+    border-radius: 2px;
+    background-color: $color-accent;
+    border: none;
+}
+.page-title {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    .cards {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        // gap: 20px;
+
+        .card {
+            width: 550px;
+            height: 500px;
+            margin: 10px;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .card-body {
+                padding: 20px;
+            }
+
+            img {
+                width: 100%;
+                height: 70%;
+                border-radius: 20px;
+                margin: 0 auto;
+                object-fit: cover;
+            }
+
+            .txtTitle {
+                font-family: $font-main;
+                font-size: 24px;
+
+            }
+
+            hr {
+                width: 90%;
+                height: 2px;
+                border: none;
+                background: $color-accent;
+            }
+
+            .more-about-discount {
+                width: 220px;
+                height: 50px;
+                font-size: 12px;
+                background-color: $color-accent;
+                border: 2px solid $color-accent;
+                border-radius: 10px;
+                font-weight: bolder;
+                text-transform: uppercase;
+            }
+            .more-about-discount:hover {
+                width: 220px;
+                height: 50px;
+                font-size: 12px;
+                background-color: $transparent;
+                border: 2px solid $color-accent;
+                border-radius: 10px;
+                font-weight: bolder;
+                text-transform: uppercase;
+            }
+        }
+
+    }
+
+    .no-discounts {
+        margin-top: 20px;
+        text-align: center;
+        color: #666;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}

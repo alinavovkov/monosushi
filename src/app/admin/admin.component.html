@@ -1,0 +1,14 @@
+<main>
+    <div class="leftMenu">
+        <button [routerLink]="[ '/admin/discounts' ]" class="menu-admin-button">Акції</button>
+        <button [routerLink]="[ '/admin/categories' ]" class="menu-admin-button"> Категорії</button>
+        <button [routerLink]="[ '/admin/products' ]" class="menu-admin-button">Товари</button>
+        <button [routerLink]="[ '/admin/orders' ]" class="menu-admin-button">Замовлення</button>
+        <button [routerLink]="[ '' ]" class="exit-button">Вихід</button>
+    </div>
+    <div class="mainContent ">
+      
+           <router-outlet></router-outlet>
+    </div> 
+    
+</main>          

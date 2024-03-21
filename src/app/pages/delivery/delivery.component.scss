@@ -1,0 +1,157 @@
+$font-main: Rotonda;
+$color-accent: #b5d8f7;
+$color-dark: #252525;
+$color-light: white;
+
+$transparent: transparent;
+$primary-color: #99cde2;
+$secondary-color: #5d855d;
+$grey: grey;
+$green: #27ae60;
+$yellow: #f2c94c;
+
+* {
+    font-family: $font-main;
+}
+
+.green {
+    color: $green;
+}
+
+.yellow {
+    color: $yellow;
+}
+
+.top-discounts {
+    width: 100%;
+    height: 20%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-title {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.hr-title {
+    width: 20%;
+    height: 5px;
+    border-radius: 2px;
+    background-color: $color-accent;
+    border: none;
+}
+
+.hr-between-divs {
+    width: 1px;
+    height: 200px;
+    background: #dcdcdc;
+}
+
+.hr-between-divs-payment {
+    width: 1px;
+    height: 180px;
+    background: #dcdcdc;
+}
+
+.box {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.left-delivery,
+.right-delivery {
+    width: 45%;
+    height: 200px;
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.txt-green-delivery,
+.txt-yellow-delivery {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title-type-zone {
+    font-size: 26px;
+}
+
+.info-zone {
+    font-size: 16px;
+}
+
+.box-payment {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.payment-info {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pay-info-img {
+    max-width: 63px;
+    width: 100%;
+    height: 60px;
+    border-radius: 10px;
+    background: #b5d8f7;
+    position: relative;
+    margin-right: 20px;
+
+}
+
+.pay-info-img img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.left-payment,
+.right-payment {
+    width: 40%;
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.txt-payment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title-payment-method {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.info-zone {
+    font-size: 16px;
+}

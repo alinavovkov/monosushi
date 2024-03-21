@@ -1,0 +1,29 @@
+
+<div class="top-discounts">
+    <hr>
+    <span class="page-title">Акції на суші</span>
+</div>
+<div class="container">
+    <div class="row">
+        <ng-container *ngIf="postBlog.length > 0">
+            <div class="cards">
+                <div class="card" *ngFor="let post of postBlog">
+                    <img [src]="post.img" class="card-img-top" alt="...">
+                    <span class="txtTitle">{{ post.headline }}</span>
+                    <hr>
+                    <button class="more-about-discount">Дізнатись більше</button>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="postBlog.length === 0">
+            <div class="card text-center">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <h1 class="text-center">Discounts not added yet</h1>
+                </div>
+                <div class="card-footer text-muted"></div>
+              </div>
+        </ng-container>
+    </div>
+</div>

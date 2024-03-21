@@ -1,0 +1,195 @@
+$font-main: Rotonda;
+$color-accent: #b5d8f7;
+$color-dark: #252525;;
+$color-light: white;
+
+
+$primary-color: #99cde2;
+$secondary-color: #5d855d;
+$light: rgb(236, 236, 236);
+$dark: rgb(37, 37, 37);
+$grey: grey;
+
+$transparent: transparent;
+$color_light_grey: rgb(206, 206, 206);
+
+main {
+    width: 98%;
+    height: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.leftMenu {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+.leftMenu button {
+    width: 100%;
+    height: 35px;
+    background: $dark;
+    color: $light;
+    font-size: 20px;
+    font-family: $font-main;
+    border-radius: 5px;
+    margin-top: 5px;
+    :active{
+        border-top: 2px solid $color-accent;
+    }
+}
+
+.mainContent {
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contentLeft,
+.contentRight {
+    width: 98%;
+    height: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    width: 100%;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input {
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px lightgrey solid;
+    outline: none;
+    margin-top: 5px;
+}
+
+.block {
+    width: 90%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+table {
+    width: 90%;
+}
+
+table,
+th,
+td {
+    padding: 5px;
+    border: 1px solid rgb(197, 197, 197);
+    border-right: none;
+    border-left: none;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+
+// buttons 
+
+.addPost {
+    width: 100px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px rgb(11, 121, 10) solid;
+    cursor: pointer;
+    color: rgb(11, 121, 10);
+}
+
+.addPost:hover {
+    background-color: rgb(11, 121, 10);
+    color: rgb(255, 255, 255);
+}
+
+.addPost:disabled {
+    cursor: auto;
+    background-color: rgb(184, 194, 225);
+    color: white;
+    border: none;
+}
+
+.button-edit{
+    width: 80px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #ffd60a;
+    color: #ffffff;
+}
+
+.button-edit:hover {
+    background-color: #ffd60ac8;
+}
+
+.button-edit:disabled {
+    cursor: auto;
+    background-color: rgb(184, 194, 225);
+    color: white;
+    border: none;
+}
+
+.button-delete {
+    width: 80px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #d90429;
+    color: #ffffff;
+}
+
+.button-delete:hover {
+    background-color: rgb(229, 26, 26);
+}
+
+.button-delete:disabled {
+    cursor: auto;
+    background-color: rgb(184, 194, 225);
+}
+
+.saveChanges {
+    width: 100px;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px rgb(11, 121, 10) solid;
+    cursor: pointer;
+
+    /* background-color: rgb(16, 51, 165); */
+    color: rgb(11, 121, 10);
+}
+
+.saveChanges:hover {
+    background-color: rgb(11, 121, 10);
+    color: rgb(255, 255, 255);
+
+}
+
+.saveChanges:disabled {
+    cursor: auto;
+    background-color: rgb(184, 194, 225);
+    color: white;
+    border: none;
+}

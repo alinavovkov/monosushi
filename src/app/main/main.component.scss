@@ -1,0 +1,102 @@
+.content {
+    width: 1500px;
+    // height: 350px;
+    margin-top: 40px;
+    margin: 0 auto;
+}
+
+.carousel-indicators {
+    width: 100%;
+    gap: 25px;
+    margin: 0 auto;
+}
+
+.carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background-color: #b5d8f7;
+}
+
+.content-carousel {
+    width: 1500px;
+    height: 390px;
+    gap: 10px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.right,
+.left {
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+
+}
+
+.carousel-item:nth-child(1) {
+    .right {
+        background-image: url(https://monosushi.com.ua/wp-content/uploads/2022/12/5-tyj-v-podarunok-.jpg);
+    }
+}
+
+.carousel-item:nth-child(1) {
+    .left {
+        background-image: url(https://monosushi.com.ua/wp-content/uploads/2022/12/rol-tyzhnya.jpg);
+    }
+}
+
+.carousel-item:nth-child(2) {
+    .right {
+        background-image: url(https://monosushi.com.ua/wp-content/uploads/2022/12/rol-tyzhnya.jpg);
+    }
+}
+
+.carousel-item:nth-child(2) {
+    .left {
+        background-image: url(https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg);
+    }
+}
+
+.carousel-item:nth-child(3) {
+    .right {
+        background-image: url(https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg);
+    }
+}
+
+.carousel-item:nth-child(3) {
+    .left {
+        background-image: url(https://monosushi.com.ua/wp-content/uploads/2022/12/monokombo.jpg);
+    }
+}
+
+.carousel-item:nth-child(4) {
+    .right {
+        background-image: url(https://monosushi.com.ua/wp-content/uploads/2022/12/monokombo.jpg);
+    }
+}
+
+.carousel-item:nth-child(4) {
+    .left {
+        background-image: url(https://monosushi.com.ua/wp-content/uploads/2022/12/samovyviz.jpg);
+    }
+}
+
+.carousel-item:nth-child(5) {
+    .right {
+        background-image: url(https://monosushi.com.ua/wp-content/uploads/2022/12/samovyviz.jpg);
+    }
+}
+
+.carousel-item:nth-child(5) {
+    .left {
+        background-image: url(https://monosushi.com.ua/wp-content/uploads/2022/12/fotomarafon-.jpg);
+    }
+}
+
+.carousel-item {
+    margin-bottom: 60px;
+}
