@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../services/post.service';
-import { IProductResponse } from '../interfaces/posts.interface';
+import { PostService } from '../../services/post.service';
+import { IProductResponse } from '../../interfaces/posts.interface';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  selector: 'app-rolls',
+  templateUrl: './rolls.component.html',
+  styleUrl: './rolls.component.scss'
 })
-export class MainComponent implements OnInit{
+export class RollsComponent implements OnInit {
   public productItems: Array<IProductResponse> = [];
   counter: number = 0;
   constructor(
     private postService: PostService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getProducts();

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IPost, IPostResponse, IPostRequest, ICategoryResponse, ICategoryRequest } from '../interfaces/posts.interface';
+import { IPost, IPostResponse, IPostRequest, 
+  ICategoryResponse, ICategoryRequest,
+IProduct, IProductRequest, IProductResponse } from '../interfaces/posts.interface';
 import { ICategory } from '../interfaces/posts.interface';
 
 @Injectable({
@@ -57,5 +59,26 @@ export class PostService {
 
   updateCategoryIDs(deletedIndex: number): Observable<void> {
     return this.http.patch<void>(`${this.apiUrl}/categories/updateIDs`, { deletedIndex });
+  }
+  
+  // products
+  getAllProducts(): Observable<IProductResponse[]> {
+    return this.http.get<IProductResponse[]>(`${this.apiUrl}/products`);
+  }
+
+  createProduct(category: IProductRequest): Observable<IProductResponse> {
+    return this.http.post<IProductResponse>(`${this.apiUrl}/products`, category);
+  }
+
+  updateProducts(category: IProductRequest, id: number): Observable<IProductResponse> {
+    return this.http.patch<IProduct>(`${this.apiUrl}/products/${id}`, category);
+  }
+
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/products/${id}`);
+  }
+
+  updateProductIDs(deletedIndex: number): Observable<void> {
+    return this.http.patch<void>(`${this.apiUrl}/products/updateIDs`, { deletedIndex });
   }
 }

@@ -1,5 +1,70 @@
 <div class="contentLeft">
-    <span> products works!</span>
-    </div>
-    <div class="contentRight">
-    </div>
+    <button class="addDiscountForm" (click)="openForm()"> Додати продукт </button>
+    <form class="form" *ngIf="clickerOpenForm" [formGroup]="productForm" (ngSubmit)="addPost()">
+        <div class="block">
+            <input type="text" placeholder="Категорія" name="category" formControlName="category" >
+        </div>
+        <div class="block">
+            <input type="text" placeholder="Назва" name="title" formControlName="title" >
+        </div>
+        <div class="block">
+            <input type="text" placeholder="Інгрідієнти" name="ingridients" formControlName="ingridients" >
+        </div>
+        <div class="block">
+            <input type="text" placeholder="Вага" name="weight" formControlName="weight" >
+        </div>
+        <div class="block">
+            <input type="text" placeholder="Ціна" name="price" formControlName="price" >
+        </div>
+        <ng-container *ngIf="!isUploaded">
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Default file input example</label>
+                <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar progress-bar-striped" role="progressbar" 
+                [style.width.%]="uploadPercent" 
+                aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isUploaded">
+            <img [src]="valueByControl('img')" alt="">
+            <button type="button" class="btn btn-danger" (click)="deleteImage()">delete</button>
+        </ng-container>
+        <!-- <span>{{ errorTxt }}</span> -->
+        <button [disabled]="productForm.invalid"  type="submit" class="addPost">
+            {{ clickerSave ? 'Зберегти зміни' : 'Додати' }}
+        </button>
+    </form>
+</div>
+<div class="contentRight">
+    <table>
+        <thead>
+            <th>№</th>
+            <th>Категорія</th>
+            <th>Назва</th>
+            <th>Інгрідієнти</th>
+            <th>Вага</th>
+            <th>Ціна</th>
+            <th>Картинка</th>
+            <th>Дії</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of adminProducts">
+                <td>{{ product.id }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.ingridients }}</td>
+                <td>{{ product.weight }} г</td>
+                <td>{{ product.price }} грн</td>
+                <td class="td-img">
+                    <img [src]="product.img" alt="" height="50px">
+                </td>
+                <td class="buttons-control">
+                    <button class="button-edit" (click)="editPost(product)"> Редагувати </button>
+                    <button class="button-delete" (click)="deletePost(product)"> Видалити </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

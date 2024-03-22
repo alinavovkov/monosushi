@@ -1,6 +1,6 @@
 <div class="content">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-   
+
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="content-carousel">
@@ -42,5 +42,58 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
     </ul>
   </div>
- 
+
+</div>
+
+<div class="menu-content">
+  <div class="top-discounts">
+    <hr>
+    <span class="page-title">Продукти</span>
+  </div>
+  <div class="menu">
+    <ul>
+      <li>Всі</li>
+      <li>Роли Філадельфія</li>
+      <li>Роли Каліфорнія</li>
+      <li>Запечені Роли</li>
+      <li>Фірмові Суші</li>
+      <li>Роли Макі</li>
+      <li>Преміум Суші</li>
+    </ul>
+  </div>
+  <div class="menu-items">
+    <div class="row">
+      <ng-container *ngIf="productItems.length > 0">
+        <div class="cards">
+          <div class="card" *ngFor="let product of productItems">
+            <img [src]="product.img" class="card-img-top" alt="...">
+            <span class="txtTitle"><b>{{ product.title }}</b></span>
+            <div class="details-item">
+              <span class="ingridients-text"> {{product.ingridients}} </span>
+              <span> {{product.weight}} г </span>
+            </div>
+            <div class="details-item-price">
+              <span><b> {{product.price}} </b> грн</span>
+              <div class="counting-items">
+                <button (click)="decrement()">-</button>
+                <span id="counter-value" class="counter-value">{{ counter }}</span>
+                <button (click)="increment()">+</button>
+              </div>
+              <button class="more-about-discount">Замовити</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="productItems.length === 0">
+        <div class="card text-center">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <h1 class="text-center">Товари відсутні</h1>
+          </div>
+          <div class="card-footer text-muted"></div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
 </div>

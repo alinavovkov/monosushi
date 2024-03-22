@@ -31,6 +31,17 @@
       "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2FA4%20-%2070.jpg?alt=media&token=956035d3-7e72-4d4f-99d5-ffff1c39fb66"
     }
   ],
+  "products": [
+    {
+      "category": "рол",
+      "title": "Запечений сирний з креветкою",
+      "ingridients": "Рис, крем сир, салат айсберг, креветка, кунжут, сирний соус, унагі соус",
+      "weight": "330",
+      "price": "345",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2F2.-zapechenyj-syrnyj-z-los.jpg.pagespeed.ce.ySjaJht9cw.jpg?alt=media&token=f2b96022-dcb4-4ae0-9f30-a02447c1f0e1",
+      "id": 1
+    }
+  ],
   "comments": [],
   "profile": {
     "name": "typicode"

@@ -22,6 +22,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getMessaging, provideMessaging } from '@angular/fire/messaging';
 
 import { environment } from '../environments/environment';
+import { RollsComponent } from './pages/rolls/rolls.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { environment } from '../environments/environment';
     AdminDiscountsComponent,
     AdminCategoriesComponent,
     AdminProductsComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    RollsComponent
   ],
   imports: [
     BrowserModule,
