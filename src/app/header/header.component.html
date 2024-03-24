@@ -69,12 +69,31 @@
                     <a class="header-phone" href="tel:+380978780837">+380978780837</a>
                     <div class="header-work-time">Працюємо з <b>11:00</b> до <b>22:30</b></div>
                 </li>
-                <li>
+                <li *ngIf="!isLogin">
+                    <div class="header-user " data-rel="1">
+                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg"
+                        [routerLink]="[ '/auth' ]">
+                        <!-- <a href="" [routerLink]="[ '/auth' ]"> login</a> -->
+
+                    </div>
+                </li>
+                <li *ngIf="isLogin">
+                    <div class="header-user " data-rel="1">
+                        <a
+                            [routerLink]="[ '/'+loginUrl ]" 
+                            routerLinkActive="route-active" 
+                            class="nav-link"
+                            aria-current="page">
+                            {{ loginPage }}
+                            </a>
+                    </div>
+                </li>
+                <!-- <li *ngIf="isLogin">
                     <div class="header-user " data-rel="1">
                         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg"
                             [routerLink]="[ '/admin' ]">
                     </div>
-                </li>
+                </li> -->
                 <li>
 
                 </li>
@@ -135,7 +154,7 @@
                     <button (click)="productCount(product, true)" type="button">+</button>
                 </div>
 
-              
+
                 <span><b>{{ product.price * product.count }}</b> грн</span>
                 <button class="delete-item" (click)="deleteProductFromBasket(product)">видалити</button>
             </div>
@@ -147,9 +166,9 @@
                     {{ total }}
                     грн
                 </span>
-            <button type="button" class="make-order">Замовити</button>
+                <button type="button" class="make-order">Замовити</button>
             </div>
-            
+
 
         </div>
 

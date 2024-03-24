@@ -28,6 +28,8 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
 import { ToastrModule } from 'ngx-toastr';
 import { CheckoutComponent } from './pages/checkout/checkout/checkout.component';
 import { DiscountInfoComponent } from './pages/discount-info/discount-info/discount-info.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { DiscountInfoComponent } from './pages/discount-info/discount-info/disco
     ProductsComponent,
     ProductInfoComponent,
     CheckoutComponent,
-    DiscountInfoComponent
+    DiscountInfoComponent,
+    AuthorizationComponent,
+    CabinetComponent
   ],
   imports: [
     BrowserModule,

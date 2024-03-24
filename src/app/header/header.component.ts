@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IProductResponse } from '../interfaces/posts.interface';
 import { OrderService } from '../services/order/order.service';
+import { AccountService } from '../services/account/account.service';
+import { ROLE } from '../constants/role.constante';
 
 @Component({
   selector: 'app-header',
@@ -14,14 +16,22 @@ export class HeaderComponent implements OnInit {
   public menuL = false;
   public total = 0;
   public totalCount = 0;
+  public isLogin = false;
+  public loginUrl = '';
+  public loginPage = '';
 
   private basket: Array<IProductResponse> = [];
-public all: any;
-  constructor(private orderService: OrderService) {}
+  public all: any;
+  constructor(
+    private orderService: OrderService,
+    private accountService: AccountService
+    ) { }
 
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
+    this.checkUserLogin();
+    this.checkUpdatesUserLogin();
   }
 
   loadBasket(): void {
@@ -82,6 +92,30 @@ public all: any;
   saveBasket(): void {
     localStorage.setItem('basket', JSON.stringify(this.basket)); // Save basket to local storage
     this.getTotalPrice(); // Update total price after any changes
-  this.getTotalCount();
+    this.getTotalCount();
   }
+
+  checkUserLogin(): void {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+    if (currentUser && currentUser.role === ROLE.ADMIN) {
+      this.isLogin = true;
+      this.loginUrl = 'admin';
+      this.loginPage = 'Admin';
+    } else if (currentUser && currentUser.role === ROLE.USER) {
+      this.isLogin = true;
+      this.loginUrl = 'cabinet';
+      this.loginPage = 'Cabinet';
+    } else {
+      this.isLogin = false;
+      this.loginUrl = '';
+      this.loginPage = '';
+    }
+  }
+
+  checkUpdatesUserLogin(): void {
+    this.accountService.isUserLogin$.subscribe(() => {
+      this.checkUserLogin();
+    })
+  }
+
 }

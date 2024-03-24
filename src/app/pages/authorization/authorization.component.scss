@@ -1,0 +1,79 @@
+$font-main: Rotonda;
+$color-accent: #b5d8f7;
+$color-dark: #252525;
+$color-light: white;
+
+
+$primary-color: #99cde2;
+$secondary-color: #5d855d;
+$grey: grey;
+
+$transparent: transparent;
+$color_light_grey: rgb(206, 206, 206);
+
+* {
+    font-family: $font-main;
+}
+
+.main-autorization {
+    width: 20%;
+    height: 50vh;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    width: 100%;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+input {
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px lightgrey solid;
+    outline: none;
+    margin-top: 5px;
+}
+
+.block {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login {
+    width: 100%;
+    height: 50%;
+    margin: 0 auto;
+    border-radius: 5px;
+    // padding-left: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: $color-accent;
+    color: $color-dark;
+}
+
+.login:hover {
+    border: 1px solid $color-accent;
+    background-color: $transparent;
+    // text-decoration: underline;
+}
+
+.login:disabled {
+    cursor: auto;
+    opacity: 0.5;
+    color: $color-dark;
+    border: none;
+}

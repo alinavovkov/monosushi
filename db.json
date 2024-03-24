@@ -63,6 +63,22 @@
       "id": 2
     }
   ],
+  "auth": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "12345",
+      "fullName": "Alina Vovkov",
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "email": "user@gmail.com",
+      "password": "12345",
+      "fullName": "Pavlo Pavliv",
+      "role": "USER"
+    }
+  ],
   "comments": [],
   "profile": {
     "name": "typicode"

@@ -17,6 +17,9 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
 import { ProductInfoResolver } from './services/product/product-info.resolver';
 import { CheckoutComponent } from './pages/checkout/checkout/checkout.component';
 import { DiscountInfoComponent } from './pages/discount-info/discount-info/discount-info.component';
+import { AuthGuard } from './guards/auth/auth.guard';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -29,9 +32,11 @@ const routes: Routes = [
     productInfo: ProductInfoResolver
   } },
   { path: 'rolls', component: RollsComponent },
+  { path: 'auth', component: AuthorizationComponent },
+  { path: 'cabinet', component: CabinetComponent, canActivate: [AuthGuard] },
   { path: 'checkout', component: CheckoutComponent },
   {
-    path: 'admin', component: AdminComponent, children: [
+    path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
       { path: 'discounts', component: AdminDiscountsComponent },
       { path: 'orders', component: AdminOrdersComponent },
       { path: 'products', component: AdminProductsComponent },
