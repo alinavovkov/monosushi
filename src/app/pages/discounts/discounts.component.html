@@ -1,4 +1,5 @@
 
+
 <div class="top-discounts">
     <hr>
     <span class="page-title">Акції на суші</span>
@@ -8,10 +9,10 @@
         <ng-container *ngIf="postBlog.length > 0">
             <div class="cards">
                 <div class="card" *ngFor="let post of postBlog">
-                    <img [src]="post.img" class="card-img-top" alt="...">
-                    <span class="txtTitle">{{ post.headline }}</span>
+                    <img [routerLink]="[ '/discounts', post.id ]" [src]="post.img" class="card-img-top" alt="...">
+                    <span [routerLink]="[ '/discounts', post.id ]" class="txtTitle">{{ post.headline }}</span>
                     <hr>
-                    <button class="more-about-discount">Дізнатись більше</button>
+                    <button class="more-about-discount" [routerLink]="[ '/discounts', post.id ]">Дізнатись більше</button>
                 </div>
             </div>
         </ng-container>

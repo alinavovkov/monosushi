@@ -12,11 +12,24 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
 import { RollsComponent } from './pages/rolls/rolls.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
+import { ProductInfoResolver } from './services/product/product-info.resolver';
+import { CheckoutComponent } from './pages/checkout/checkout/checkout.component';
+import { DiscountInfoComponent } from './pages/discount-info/discount-info/discount-info.component';
+
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'delivery', component: DeliveryComponent },
   { path: 'discounts', component: DiscountsComponent },
+  { path: 'discounts/:id', component: DiscountInfoComponent },
+
+  { path: 'product/:category', component: ProductsComponent },
+  { path: 'product/:category/:id', component: ProductInfoComponent, resolve: {
+    productInfo: ProductInfoResolver
+  } },
   { path: 'rolls', component: RollsComponent },
+  { path: 'checkout', component: CheckoutComponent },
   {
     path: 'admin', component: AdminComponent, children: [
       { path: 'discounts', component: AdminDiscountsComponent },

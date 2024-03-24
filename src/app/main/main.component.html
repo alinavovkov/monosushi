@@ -66,7 +66,7 @@
       <ng-container *ngIf="productItems.length > 0">
         <div class="cards">
           <div class="card" *ngFor="let product of productItems">
-            <img [src]="product.img" class="card-img-top" alt="...">
+            <img [routerLink]="[ '/product/'+product.category.way ]"  [src]="product.img" class="card-img-top" alt="...">
             <span class="txtTitle"><b>{{ product.title }}</b></span>
             <div class="details-item">
               <span class="ingridients-text"> {{product.ingridients}} </span>

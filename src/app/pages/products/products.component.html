@@ -1,8 +1,13 @@
-<div class="menu-content">
-    <div class="top-discounts">
-      <hr>
-      <span class="page-title">Продукти</span>
-    </div>
+<!-- <div class="menu-content"> -->
+
+  <div class="top-discounts">
+    <hr>
+    <span *ngIf="isActive('products')" [ngClass]="{ 'active': isActive('products') }" class="page-title">Продукти</span>
+    <span *ngIf="isActive('rolls')" [ngClass]="{ 'active': isActive('rolls') }" class="page-title">Роли</span>
+    <span *ngIf="isActive('sets')" [ngClass]="{ 'active': isActive('sets') }" class="page-title">Сети</span>
+    <span *ngIf="isActive('drinks')" [ngClass]="{ 'active': isActive('drinks') }" class="page-title">Напої</span>
+    <span *ngIf="isActive('sauces')" [ngClass]="{ 'active': isActive('sauces') }" class="page-title">Соуси</span>
+  </div>
     <div class="menu">
       <ul>
         <li>Всі</li>
@@ -19,19 +24,19 @@
         <ng-container *ngIf="productItems.length > 0">
           <div class="cards">
             <div class="card" *ngFor="let product of productItems">
-              <img [routerLink]="[ '/product/'+product.category.way ]"  [src]="product.img" class="card-img-top" alt="...">
-              <span class="txtTitle"><b>{{ product.title }}</b></span>
+              <img [routerLink]="[ '/product/'+product.category.way, product.id ]"  [src]="product.img" class="card-img-top" alt="...">
+              <span [routerLink]="[ '/product/'+product.category.way, product.id ]" class="txtTitle"><b>{{ product.title }}</b></span>
               <div class="details-item">
                 <span class="ingridients-text"> {{product.ingridients}} </span>
                 <span> {{product.weight}} г </span>
               </div>
               <div class="details-item-price">
-                <span><b> {{product.price}} </b> грн</span>
+                <span><b> {{product.price * product.count}} </b> грн</span>
                 <div class="counting-items">
-                  <button (click)="decrement()">-</button>
-                  <span id="counter-value" class="counter-value">{{ counter }}</span>
-                  <button (click)="increment()">+</button>
-                </div>
+                  <button (click)="productCount(product, false)" type="button">-</button>
+                  <input type="number" [value]="product.count" class="counter-value">
+                  <button (click)="productCount(product, true)" type="button">+</button>
+              </div>
                 <button class="more-about-discount">Замовити</button>
               </div>
             </div>
@@ -49,4 +54,4 @@
         </ng-container>
       </div>
     </div>
-  </div>
+  <!-- </div> -->

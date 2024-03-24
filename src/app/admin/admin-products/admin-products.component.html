@@ -1,8 +1,13 @@
 <div class="contentLeft">
     <button class="addDiscountForm" (click)="openForm()"> Додати продукт </button>
-    <form class="form" *ngIf="clickerOpenForm" [formGroup]="productForm" (ngSubmit)="addPost()">
+    <form class="form" *ngIf="clickerOpenForm" [formGroup]="productForm" (ngSubmit)="addProduct()">
         <div class="block">
-            <input type="text" placeholder="Категорія" name="category" formControlName="category" >
+            <select  formControlName="category" >
+                <option [ngValue]="category" *ngFor="let category of adminCategories">
+                {{ category.title }}
+                </option>
+            </select>
+            <!-- <input type="text" placeholder="Категорія" name="category"  > -->
         </div>
         <div class="block">
             <input type="text" placeholder="Назва" name="title" formControlName="title" >
@@ -52,7 +57,7 @@
         <tbody>
             <tr *ngFor="let product of adminProducts">
                 <td>{{ product.id }}</td>
-                <td>{{ product.category }}</td>
+                <td>{{ product.category.title }}</td>
                 <td>{{ product.title }}</td>
                 <td>{{ product.ingridients }}</td>
                 <td>{{ product.weight }} г</td>
@@ -61,8 +66,8 @@
                     <img [src]="product.img" alt="" height="50px">
                 </td>
                 <td class="buttons-control">
-                    <button class="button-edit" (click)="editPost(product)"> Редагувати </button>
-                    <button class="button-delete" (click)="deletePost(product)"> Видалити </button>
+                    <button class="button-edit" (click)="editProduct(product)"> Редагувати </button>
+                    <button class="button-delete" (click)="deleteProduct(product)"> Видалити </button>
                 </td>
             </tr>
         </tbody>

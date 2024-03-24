@@ -1,0 +1,20 @@
+<div class="way">
+    <span  [routerLink]="[ '' ]">Головна</span>
+    <span> · </span>
+    <span  [routerLink]="[ '/discounts' ]">Акції</span>
+    <span> · </span>
+    <!-- <span></span>
+    <span>·</span> -->
+    <span>{{ discount.title }}</span>
+</div>
+
+<div class="container">
+    <div class="title-discount">
+        <h2 class="title">{{ discount.title }}</h2>
+
+    </div>
+    <div class="details-discount">
+        <span>{{ discount.text }}</span>
+    </div>
+
+</div>

@@ -1,45 +1,66 @@
 {
   "posts": [
     {
-      "date": "3/21/2024",
-      "title": "ss",
-      "headline": "ss",
-      "text": "ss",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2FW35O.gif?alt=media&token=635627f5-4188-4fe4-9fa5-15cd8862a979",
-      "id": 4
-    },
-    {
-      "date": "3/21/2024",
-      "title": "dd",
-      "headline": "dd",
-      "text": "ddd",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2FA4%20-%2032.png?alt=media&token=feaaffd6-9fb2-4609-a6aa-e894ab7f17d2",
-      "id": 5
+      "date": [
+        "3/24/2024"
+      ],
+      "title": "\"3+1=5\"",
+      "headline": "\"3+1=5\"",
+      "text": "Замовляйте 5 ролів, а платіть за 4.",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2Fimgonline-com-ua-compressed-ajbic74qfau00-scaled-697x379.jpg?alt=media&token=6ba9abec-8deb-4100-a030-e3370159aab3",
+      "id": 1
     }
   ],
   "categories": [
     {
-      "id": 1,
-      "title": "alinaka",
-      "way": "ikkk",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2F180%20files-Wall%20Art%20Print-Digital%20Prints-Funny%20Art%20Print-Inspiration%20Art-Gallery%20Wall%20Art-Gift%20For%20Teacher-Preppy%20Pink%20Art-Office%20Art%20Prints.jpg?alt=media&token=e941fec5-2492-4f03-b54e-596228de113f"
+      "title": "Сети",
+      "way": "sets",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2F2.-zapechenyj-syrnyj-z-los.jpg?alt=media&token=f899a76f-85b6-4b2c-88ce-c1691c4cad4b",
+      "id": 2
     },
     {
-      "id": 2,
-      "title": "dd",
-      "way": "dd",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2FA4%20-%2070.jpg?alt=media&token=956035d3-7e72-4d4f-99d5-ffff1c39fb66"
+      "title": "Напої",
+      "way": "drinks",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2F2.-zapechenyj-syrnyj-z-los.jpg?alt=media&token=54c5ec2c-b25b-46f7-b2f1-376ae61890ef",
+      "id": 3
+    },
+    {
+      "title": "Роли",
+      "way": "rolls",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2F2.-zapechenyj-syrnyj-z-los.jpg?alt=media&token=77722d69-fc2f-42f9-be5b-fa0f2e196b01",
+      "id": 4
     }
   ],
   "products": [
     {
-      "category": "рол",
+      "category": {
+        "title": "rolls",
+        "way": "rolls",
+        "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2F2.-zapechenyj-syrnyj-z-los.jpg?alt=media&token=3fa95598-1569-467e-b51d-5ad6a6c28c7c",
+        "id": 1
+      },
       "title": "Запечений сирний з креветкою",
-      "ingridients": "Рис, крем сир, салат айсберг, креветка, кунжут, сирний соус, унагі соус",
-      "weight": "330",
-      "price": "345",
-      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2F2.-zapechenyj-syrnyj-z-los.jpg.pagespeed.ce.ySjaJht9cw.jpg?alt=media&token=f2b96022-dcb4-4ae0-9f30-a02447c1f0e1",
+      "ingridients": " Рис, крем сир, салат айсберг, креветка, кунжут, сирний соус, унагі соус",
+      "weight": "330 ",
+      "price": "345 ",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2F2.-zapechenyj-syrnyj-z-los.jpg?alt=media&token=443ee4ba-a2d6-48c5-a552-8dcc4b64c7a2",
+      "count": 1,
       "id": 1
+    },
+    {
+      "category": {
+        "title": "Сети",
+        "way": "sets",
+        "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2F2.-zapechenyj-syrnyj-z-los.jpg?alt=media&token=f899a76f-85b6-4b2c-88ce-c1691c4cad4b",
+        "id": 2
+      },
+      "title": "Сет Філадельфія ",
+      "ingridients": "Філадельфія: з лососем / в кунжуті / з тунцем / з вугрем",
+      "weight": "1070 ",
+      "price": "1150 ",
+      "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2Fimgonline-com-ua-compressed-jknw6idh54664-scaled.jpg.pagespeed.ce.4A9elt-ybs.jpg?alt=media&token=c9fae36f-1b01-4095-8db0-12127daf6990",
+      "count": null,
+      "id": 2
     }
   ],
   "comments": [],

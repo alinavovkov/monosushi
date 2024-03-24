@@ -1,42 +1,48 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { PostService } from '../../services/post.service';
-import { ICategory, ICategoryResponse, ICategoryRequest } from '../../interfaces/posts.interface';
+import { ICategoryResponse } from '../../interfaces/posts.interface';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CategoryService } from '../../services/category/category.service';
 
 @Component({
   selector: 'app-admin-categories',
   templateUrl: './admin-categories.component.html',
   styleUrl: './admin-categories.component.scss'
 })
-export class AdminCategoriesComponent {
+export class AdminCategoriesComponent implements OnInit {
   public adminCategories: Array<ICategoryResponse> = [];
   public categoryForm!: FormGroup;
 
   public clickerSave!: boolean;
-  public editID!: number;
+  // public editID!: number;
   public clickerOpenForm!: boolean;
   public uploadPercent!: number;
   public isUploaded = false;
   private currentCategoryId = 0;
 
+
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
-    private storage: Storage
+    private categoryService: CategoryService,
+    private storage: Storage,
+    private toastr: ToastrService
+
   ) { }
 
   ngOnInit(): void {
     this.initCategoryForm();
-    this.loadPosts();
+    this.loadCategories();
   }
 
   initCategoryForm(): void {
     // const now = new Date();
-    const index = this.adminCategories.length;
+    // const index = this.adminCategories.length;
 
     this.categoryForm = this.fb.group({
-      id: index + 1,
+      // id: index + 1,
       title: [null, Validators.required],
       way: [null, Validators.required],
       img: [null, Validators.required]
@@ -48,8 +54,8 @@ export class AdminCategoriesComponent {
     this.clickerOpenForm = !this.clickerOpenForm;
   }
 
-  loadPosts(): void {
-    this.postService.getAllCategories().subscribe(data => {
+  loadCategories(): void {
+    this.categoryService.getAllCategories().subscribe(data => {
       this.adminCategories = data;
       console.log(data);
     })
@@ -57,12 +63,15 @@ export class AdminCategoriesComponent {
 
   addPost(): void {
     if (this.clickerSave) {
-      this.postService.updateCategories(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
-        this.loadPosts();
+      this.categoryService.updateCategories(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
+        this.loadCategories();
+        this.toastr.success('Category successfully updated');
+
       })
     } else {
-      this.postService.createCategory(this.categoryForm.value).subscribe(() => {
-        this.loadPosts();
+      this.categoryService.createCategory(this.categoryForm.value).subscribe(() => {
+        this.loadCategories();
+        this.toastr.success('Category successfully created');
       })
     }
     // this.editStatus = false;
@@ -70,6 +79,8 @@ export class AdminCategoriesComponent {
     this.categoryForm.reset();
     this.isUploaded = false;
     this.uploadPercent = 0;
+    console.log(this.adminCategories);
+    
   }
 
   editPost(category: ICategoryResponse) {
@@ -84,17 +95,15 @@ export class AdminCategoriesComponent {
     // this.editStatus = true;
     this.currentCategoryId = category.id;
     this.isUploaded = true;
-    this.editID = category.id;
+    // this.editID = category.id;
     this.clickerSave = true;
   }
 
-  deletePost(category: ICategory): void {
-    const index = this.adminCategories.indexOf(category);
-    if (index !== -1) {
-      this.postService.delete(category.id).subscribe(() => {
-        this.loadPosts();
-      })
-    }
+  deletePost(category: ICategoryResponse): void {
+    this.categoryService.deleteCategory(category.id).subscribe(() => {
+      this.loadCategories();
+      this.toastr.success('Category successfully deleted');
+    })
   }
 
   upload(event: any): void {

@@ -14,7 +14,7 @@ export class AdminDiscountsComponent implements OnInit {
   public discountForm!: FormGroup;
 
   public clickerSave!: boolean;
-  public editID!: number;
+  // public editID!: number;
   public clickerOpenForm!: boolean;
   public uploadPercent!: number;
   public isUploaded = false;
@@ -28,7 +28,7 @@ export class AdminDiscountsComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCategoryForm();
-    this.loadPosts();
+    this.loadDiscounts();
   }
 
   initCategoryForm(): void {
@@ -47,7 +47,7 @@ export class AdminDiscountsComponent implements OnInit {
     this.clickerOpenForm = !this.clickerOpenForm;
   }
 
-  loadPosts(): void {
+  loadDiscounts(): void {
     this.postService.getAll().subscribe(data => {
       this.adminDiscounts = data;
       console.log(data);
@@ -57,11 +57,11 @@ export class AdminDiscountsComponent implements OnInit {
   addPost(): void {
     if (this.clickerSave) {
       this.postService.update(this.discountForm.value, this.currentCategoryId).subscribe(() => {
-        this.loadPosts();
+        this.loadDiscounts();
       })
     } else {
       this.postService.create(this.discountForm.value).subscribe(() => {
-        this.loadPosts();
+        this.loadDiscounts();
       })
     }
     // this.editStatus = false;
@@ -85,7 +85,7 @@ export class AdminDiscountsComponent implements OnInit {
     // this.editStatus = true;
     this.currentCategoryId = post.id;
     this.isUploaded = true;
-    this.editID = post.id;
+    // this.editID = post.id;
     this.clickerSave = true;
   }
 
@@ -93,7 +93,7 @@ export class AdminDiscountsComponent implements OnInit {
     const index = this.adminDiscounts.indexOf(post);
     if (index !== -1) {
       this.postService.delete(post.id).subscribe(() => {
-        this.loadPosts();
+        this.loadDiscounts();
       })
     }
   }

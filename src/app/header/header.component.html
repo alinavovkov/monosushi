@@ -1,6 +1,6 @@
 <div class="top-menu">
     <div class="left-conner">
-        <a class="header-logo" href=""   [routerLink]="[ '' ]">
+        <a class="header-logo" href="" [routerLink]="[ '' ]">
             <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="" oncontextmenu="return false">
         </a>
     </div>
@@ -8,7 +8,7 @@
         <nav>
             <ul id="menu-golovne-menyu" class="main-nav">
                 <li id="menu-item-516" class="menu-item ">
-                    <a href=""  [routerLink]="[ '/discounts' ]">
+                    <a href="" [routerLink]="[ '/discounts' ]">
                         <div class="item-menu">
                             <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-gift.svg" alt=""
                                 oncontextmenu="return false">
@@ -16,26 +16,22 @@
                         </div>
                     </a>
                 </li>
-                <li id="menu-item-519" class="menu-item"><a
-                        href=""  [routerLink]="[ '/rolls' ]">
+                <li id="menu-item-519" class="menu-item"><a href="" [routerLink]="[ '/product/rolls' ]">
                         <div class="item-menu"><img
                                 src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg" alt=""
                                 oncontextmenu="return false"><span>Роли</span></div>
                     </a></li>
-                <li id="menu-item-520" class="menu-item "><a
-                        href=""  [routerLink]="[ '/discounts' ]">
+                <li id="menu-item-520" class="menu-item "><a href="" [routerLink]="[ '/product/sets' ]">
                         <div class="item-menu"><img
                                 src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-sets.svg" alt=""
                                 oncontextmenu="return false"><span>Сети</span></div>
                     </a></li>
-                <li id="menu-item-522" class="menu-item "><a
-                        href=""  [routerLink]="[ '/discounts' ]">
+                <li id="menu-item-522" class="menu-item "><a href="" [routerLink]="[ '/product/drinks' ]">
                         <div class="item-menu"><img
                                 src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-drinks.svg" alt=""
                                 oncontextmenu="return false"><span>Напої</span></div>
                     </a></li>
-                <li id="menu-item-6309" class="menu-item  "><a
-                        href=""  [routerLink]="[ '/discounts' ]">
+                <li id="menu-item-6309" class="menu-item  "><a href="" [routerLink]="[ '/product/sauces' ]">
                         <div class="item-menu"><img src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg"
                                 alt="" oncontextmenu="return false"><span>Соуси</span></div>
                     </a></li>
@@ -43,17 +39,17 @@
             <div class="menu-burger">
                 <div class="container">
                     <a id="menu-toggle" class="menu-toggle" (click)="hamButton()" [ngClass]="{'nav-open': clickerMenu}">
-                      <span class="menu-toggle-bar menu-toggle-bar--top"></span>
-                      <span class="menu-toggle-bar menu-toggle-bar--middle"></span>
-                      <span class="menu-toggle-bar menu-toggle-bar--bottom"></span>
+                        <span class="menu-toggle-bar menu-toggle-bar--top"></span>
+                        <span class="menu-toggle-bar menu-toggle-bar--middle"></span>
+                        <span class="menu-toggle-bar menu-toggle-bar--bottom"></span>
                     </a>
-                  </div>
-              
+                </div>
+
                 <div class="nav-links" *ngIf="clickerMenu">
-                    <a href=""  [routerLink]="[ '/delivery' ]">
+                    <a href="" [routerLink]="[ '/delivery' ]">
                         <div>Доставка та оплата</div>
                     </a>
-                    <a href=""  [routerLink]="[ '/about' ]">
+                    <a href="" [routerLink]="[ '/about' ]">
                         <div>Про нас</div>
                     </a>
                     <a href="" [routerLink]="[ '/discounts' ]">
@@ -74,8 +70,9 @@
                     <div class="header-work-time">Працюємо з <b>11:00</b> до <b>22:30</b></div>
                 </li>
                 <li>
-                    <div class="header-user " data-rel="1" >
-                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" [routerLink]="[ '/admin' ]">
+                    <div class="header-user " data-rel="1">
+                        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg"
+                            [routerLink]="[ '/admin' ]">
                     </div>
                 </li>
                 <li>
@@ -87,13 +84,76 @@
 
     <div class="header-basket open-cart">
         <i>
-            <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="basket"
+            <a [routerLink]="[ '/checkout' ]" routerLinkActive="route-active" class="nav-link basket"
+                aria-current="page">
+                <img src="https://la.ua/wp-content/themes/lapiec/assets/frontend/img/icons/shopping-cart.svg" alt=""
+                    (click)="hamButtonBasket()" [ngClass]="{'nav-open': clickerBasket}">
+                <span>{{ totalCount }}</span>
+            </a>
+            <!-- <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="basket"
                 oncontextmenu="return false">
-            <span>0</span>
+            <span>0</span> -->
         </i>
         <div class="basket-price empty ">
-            <b id="basket-total-price" class="card-total-price">0</b>
+            <b id="basket-total-price" class="card-total-price">{{ total }}</b>
             <span>грн</span>
         </div>
+
     </div>
+    <!-- <div class="nav-basket" *ngIf="clickerBasket">
+        <ul>
+            <li *ngFor="let product of productItems">
+                <img [routerLink]="[ '/product/'+product.category.way, product.id ]" [src]="product.img"
+                    class="card-img-top" alt="...">
+                <span [routerLink]="[ '/product/'+product.category.way, product.id ]" class="txtTitle"><b>{{
+                        product.title }}</b></span>
+                <div class="details-item-price">
+                    <div class="counting-items">
+                        <button (click)="productCount(product, false)" type="button">-</button>
+                        <input type="number" [value]="product.count" class="counter-value">
+                        <button (click)="productCount(product, true)" type="button">+</button>
+                    </div>
+                  <span><b> {{product.price * product.count}} </b> грн</span>
+
+                    <button class="more-about-discount">delete</button>
+                </div>
+
+            </li>
+        </ul>
+    </div> -->
+    <div class="nav-basket" *ngIf="clickerBasket">
+
+        <div class="item-from-basket" *ngFor="let product of productItems">
+            <img [routerLink]="['/product/' + product.category.way, product.id]" [src]="product.img"
+                class="card-img-top" alt="...">
+            <span [routerLink]="['/product/' + product.category.way, product.id]" class="txtTitle"><b>{{
+                    product.title }}</b></span>
+            <div class="details-item-price">
+                <div class="counting-items">
+                    <button (click)="productCount(product, false)" type="button">-</button>
+                    <input type="number" [(ngModel)]="product.count" class="counter-value">
+                    <button (click)="productCount(product, true)" type="button">+</button>
+                </div>
+
+              
+                <span><b>{{ product.price * product.count }}</b> грн</span>
+                <button class="delete-item" (click)="deleteProductFromBasket(product)">видалити</button>
+            </div>
+        </div>
+        <div class="bottom-order-basket-bc">
+            <div class="bottom-order-basket">
+                <span>
+                    <b>Сума:</b>
+                    {{ total }}
+                    грн
+                </span>
+            <button type="button" class="make-order">Замовити</button>
+            </div>
+            
+
+        </div>
+
+    </div>
+
+
 </div>

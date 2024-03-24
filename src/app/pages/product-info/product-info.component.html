@@ -1,0 +1,36 @@
+<div class="way">
+    <span [routerLink]="[ '' ]">Головна</span>
+    <span> · </span>
+    <span>{{ currentProduct.category.title }}</span>
+    <span> · </span>
+    <!-- <span></span>
+    <span>·</span> -->
+    <span>{{ currentProduct.title }}</span>
+</div>
+<div class="card">
+    <div class="imgPart">
+        <img [src]="currentProduct.img" class="card-img-top" alt="...">
+    </div>
+    <div class="detailsPart">
+        <h1 class="txtTitle"><b>{{ currentProduct.title }}</b></h1>
+        <div class="details-item">
+            <span class="ingridients-text">
+                <b class="accent-color"> Склад: </b>
+                {{currentProduct.ingridients}}
+            </span>
+            <span>
+                <b class="accent-color"> Вага: </b>
+                {{currentProduct.weight}} г
+            </span>
+        </div>
+        <div class="details-item-price">
+            <span><b> {{currentProduct.price * currentProduct.count }} </b> грн</span>
+            <div class="counting-items">
+                <button (click)="productCount(currentProduct, false)" type="button">-</button>
+                <input type="number" [value]="currentProduct.count" class="counter-value">
+                <button (click)="productCount(currentProduct, true)" type="button">+</button>
+            </div>
+            <button class="more-about-discount" (click)="addToBasket(currentProduct)">Замовити</button>
+        </div>
+    </div>
+</div>

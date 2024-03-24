@@ -1,0 +1,36 @@
+
+<div class="top-discounts">
+    <hr>
+    <span class="page-title">Кошик</span>
+</div>
+<div class="basket-page">
+    <div class="item-from-basket" *ngFor="let product of productItems">
+        <img [routerLink]="['/product/' + product.category.way, product.id]" [src]="product.img"
+            class="card-img-top" alt="...">
+        <span [routerLink]="['/product/' + product.category.way, product.id]" class="txtTitle"><b>{{
+                product.title }}</b></span>
+        <div class="details-item-price">
+            <div class="counting-items">
+                <button (click)="productCount(product, false)" type="button">-</button>
+                <input type="number" [(ngModel)]="product.count" class="counter-value">
+                <button (click)="productCount(product, true)" type="button">+</button>
+            </div>
+
+          
+            <span><b>{{ product.price * product.count }}</b> грн</span>
+            <button class="delete-item" (click)="deleteProductFromBasket(product)">видалити</button>
+        </div>
+    </div>
+    <div class="bottom-order-basket-bc">
+        <div class="bottom-order-basket">
+            <span>
+                <b>Сума:</b>
+                {{ total }}
+                грн
+            </span>
+        <button type="button" class="make-order">Замовити</button>
+        </div>
+        
+
+    </div>
+</div>

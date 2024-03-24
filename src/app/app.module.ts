@@ -23,6 +23,11 @@ import { getMessaging, provideMessaging } from '@angular/fire/messaging';
 
 import { environment } from '../environments/environment';
 import { RollsComponent } from './pages/rolls/rolls.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
+import { ToastrModule } from 'ngx-toastr';
+import { CheckoutComponent } from './pages/checkout/checkout/checkout.component';
+import { DiscountInfoComponent } from './pages/discount-info/discount-info/discount-info.component';
 
 
 @NgModule({
@@ -39,7 +44,11 @@ import { RollsComponent } from './pages/rolls/rolls.component';
     AdminCategoriesComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    RollsComponent
+    RollsComponent,
+    ProductsComponent,
+    ProductInfoComponent,
+    CheckoutComponent,
+    DiscountInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +61,8 @@ import { RollsComponent } from './pages/rolls/rolls.component';
     // provideMessaging(() => getMessaging())
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
-    provideMessaging(() => getMessaging())
-
+    provideMessaging(() => getMessaging()),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

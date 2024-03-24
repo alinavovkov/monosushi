@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { IProductResponse } from '../interfaces/posts.interface';
-import { OrderService } from '../services/order/order.service';
+import { IProductResponse } from '../../../interfaces/posts.interface';
+import { OrderService } from '../../../services/order/order.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrl: './checkout.component.scss'
 })
-export class HeaderComponent implements OnInit {
+export class CheckoutComponent implements OnInit {
   public clickerMenu = false;
   public clickerBasket = false;
   public productItems: any;

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../services/post.service';
-import { IProduct, IProductRequest, IProductResponse } from '../../interfaces/posts.interface';
+// import { productService } from '../../services/post.service';
+import { ProductService } from '../../services/product/product.service';
+import { CategoryService } from '../../services/category/category.service';
+
+import { IProductResponse, ICategoryResponse } from '../../interfaces/posts.interface';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-products',
@@ -11,6 +15,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AdminProductsComponent implements OnInit {
   public adminProducts: Array<IProductResponse> = [];
+  public adminCategories: Array<ICategoryResponse> = [];
+
   public productForm!: FormGroup;
 
   public clickerSave!: boolean;
@@ -22,12 +28,17 @@ export class AdminProductsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private postService: PostService,
-    private storage: Storage
+    private productService: ProductService,
+    private categoryService: CategoryService,
+
+    private storage: Storage,
+    private toastr: ToastrService
+
   ) { }
 
   ngOnInit(): void {
     this.initProductForm();
+    this.loadCategories();
     this.loadProducts();
   }
 
@@ -38,7 +49,8 @@ export class AdminProductsComponent implements OnInit {
       ingridients: [null, Validators.required],
       weight: [null, Validators.required],
       price: [null, Validators.required],
-      img: [null, Validators.required]
+      img: [null, Validators.required],
+      count: [1]
     });
 
   }
@@ -48,20 +60,35 @@ export class AdminProductsComponent implements OnInit {
   }
 
   loadProducts(): void {
-    this.postService.getAllProducts().subscribe(data => {
+    this.productService.getAll().subscribe(data => {
       this.adminProducts = data;
       console.log(data);
     })
   }
 
-  addPost(): void {
+  loadCategories(): void {
+    this.categoryService.getAllCategories().subscribe(data => {
+      this.adminCategories = data;
+      this.productForm.patchValue({
+        category: this.adminCategories[0].id
+      })
+      console.log(this.adminCategories);
+      
+    })
+  }
+
+  addProduct(): void {
     if (this.clickerSave) {
-      this.postService.updateProducts(this.productForm.value, this.currentCategoryId).subscribe(() => {
+      this.productService.update(this.productForm.value, this.currentCategoryId).subscribe(() => {
         this.loadProducts();
+        this.toastr.success('Product successfully updated');
+
       })
     } else {
-      this.postService.createProduct(this.productForm.value).subscribe(() => {
+      this.productService.create(this.productForm.value).subscribe(() => {
         this.loadProducts();
+        this.toastr.success('Product successfully created');
+
       })
     }
     // this.editStatus = false;
@@ -71,7 +98,7 @@ export class AdminProductsComponent implements OnInit {
     this.uploadPercent = 0;
   }
 
-  editPost(product: IProductResponse) {
+  editProduct(product: IProductResponse) {
 
     this.productForm.patchValue({
       category: product.category,
@@ -89,13 +116,11 @@ export class AdminProductsComponent implements OnInit {
     this.clickerSave = true;
   }
 
-  deletePost(product: IProduct): void {
-    const index = this.adminProducts.indexOf(product);
-    if (index !== -1) {
-      this.postService.delete(product.id).subscribe(() => {
-        this.loadProducts();
-      })
-    }
+  deleteProduct(product: IProductResponse): void {
+    this.productService.delete(product.id).subscribe(() => {
+      this.loadProducts();
+      this.toastr.success('Product successfully deleted');
+    })
   }
 
   upload(event: any): void {

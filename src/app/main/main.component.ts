@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../services/post.service';
+import { ProductService } from '../services/product/product.service'; 
 import { IProductResponse } from '../interfaces/posts.interface';
 
 @Component({
@@ -11,7 +11,7 @@ export class MainComponent implements OnInit{
   public productItems: Array<IProductResponse> = [];
   counter: number = 0;
   constructor(
-    private postService: PostService
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class MainComponent implements OnInit{
   }
 
   getProducts(): void {
-    this.postService.getAllProducts().subscribe(data => {
+    this.productService.getAll().subscribe(data => {
       this.productItems = data;
     })
   }
