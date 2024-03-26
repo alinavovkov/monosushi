@@ -9,6 +9,146 @@
       "text": "Замовляйте 5 ролів, а платіть за 4.",
       "img": "https://firebasestorage.googleapis.com/v0/b/monosushi-angular.appspot.com/o/images%2Fimgonline-com-ua-compressed-ajbic74qfau00-scaled-697x379.jpg?alt=media&token=6ba9abec-8deb-4100-a030-e3370159aab3",
       "id": 1
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTE0YWFmOTMtYTU2ZS00ZTIxLWE3OTEtYTNiYzBkZjViZThiXkEyXkFqcGdeQXVyODMzMzQ4OTI@._V1_SX300.jpg",
+      "title": "Captain Marvel",
+      "type": "movie",
+      "year": "2019",
+      "id": 2
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BZmQ3OTZkNDUtNTU0Mi00ZjE4LTgyNTUtY2E4NWRmNDUxMzkyXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg",
+      "title": "Ms. Marvel",
+      "type": "series",
+      "year": "2022",
+      "id": 3
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BZDIwZTM4M2QtMWFhYy00N2VmLWFlMjItMzI3NjBjYTc0OTMxXkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel One-Shot: Agent Carter",
+      "type": "movie",
+      "year": "2013",
+      "id": 4
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BZGFkMTZkMDQtNzM4Yy00YWEwLTkzOWEtZTMyNDRlNmJhYWJhXkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel One-Shot: All Hail the King",
+      "type": "movie",
+      "year": "2014",
+      "id": 5
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BMjNlMzAxNmQtOGEwZi00NTEyLWI0NWYtMTlhNmE2YTA3ZDVhXkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel One-Shot: Item 47",
+      "type": "movie",
+      "year": "2012",
+      "id": 6
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BYmVlYTg3N2QtMWM2OS00YWQyLWI2M2MtMDc0ZjBkZjk1MTY3XkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel One-Shot: A Funny Thing Happened on the Way to Thor's Hammer",
+      "type": "movie",
+      "year": "2011",
+      "id": 7
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BNGE4YjU5MDAtYzYzMC00M2RlLTk0NDgtNDU1MjgyMGI0MjI3XkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel One-Shot: The Consultant",
+      "type": "movie",
+      "year": "2011",
+      "id": 8
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BMzdiNGVlZGYtMGY1Ni00OGU1LTlmYzEtZDBjYjk3OGM3YTNkXkEyXkFqcGdeQXVyNzk3NDUzNTc@._V1_SX300.jpg",
+      "title": "Marvel Studios: Legends",
+      "type": "series",
+      "year": "2021–",
+      "id": 9
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BNWMyNWYyMmYtZjNiZi00MzFmLTg2MjYtYWEzZWY1MzBhY2I2XkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel Studios: Assembled",
+      "type": "series",
+      "year": "2021–",
+      "id": 10
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BOTA5ODA2NTI2M15BMl5BanBnXkFtZTgwNTcxMzU1MDE@._V1_SX300.jpg",
+      "title": "Lego Marvel Super Heroes",
+      "type": "game",
+      "year": "2013",
+      "id": 11
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTE0YWFmOTMtYTU2ZS00ZTIxLWE3OTEtYTNiYzBkZjViZThiXkEyXkFqcGdeQXVyODMzMzQ4OTI@._V1_SX300.jpg",
+      "title": "Captain Marvel",
+      "type": "movie",
+      "year": "2019",
+      "id": 12
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BZmQ3OTZkNDUtNTU0Mi00ZjE4LTgyNTUtY2E4NWRmNDUxMzkyXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg",
+      "title": "Ms. Marvel",
+      "type": "series",
+      "year": "2022",
+      "id": 13
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BZDIwZTM4M2QtMWFhYy00N2VmLWFlMjItMzI3NjBjYTc0OTMxXkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel One-Shot: Agent Carter",
+      "type": "movie",
+      "year": "2013",
+      "id": 14
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BZGFkMTZkMDQtNzM4Yy00YWEwLTkzOWEtZTMyNDRlNmJhYWJhXkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel One-Shot: All Hail the King",
+      "type": "movie",
+      "year": "2014",
+      "id": 15
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BMjNlMzAxNmQtOGEwZi00NTEyLWI0NWYtMTlhNmE2YTA3ZDVhXkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel One-Shot: Item 47",
+      "type": "movie",
+      "year": "2012",
+      "id": 16
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BYmVlYTg3N2QtMWM2OS00YWQyLWI2M2MtMDc0ZjBkZjk1MTY3XkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel One-Shot: A Funny Thing Happened on the Way to Thor's Hammer",
+      "type": "movie",
+      "year": "2011",
+      "id": 17
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BNGE4YjU5MDAtYzYzMC00M2RlLTk0NDgtNDU1MjgyMGI0MjI3XkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel One-Shot: The Consultant",
+      "type": "movie",
+      "year": "2011",
+      "id": 18
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BMzdiNGVlZGYtMGY1Ni00OGU1LTlmYzEtZDBjYjk3OGM3YTNkXkEyXkFqcGdeQXVyNzk3NDUzNTc@._V1_SX300.jpg",
+      "title": "Marvel Studios: Legends",
+      "type": "series",
+      "year": "2021–",
+      "id": 19
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BNWMyNWYyMmYtZjNiZi00MzFmLTg2MjYtYWEzZWY1MzBhY2I2XkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_SX300.jpg",
+      "title": "Marvel Studios: Assembled",
+      "type": "series",
+      "year": "2021–",
+      "id": 20
+    },
+    {
+      "poster": "https://m.media-amazon.com/images/M/MV5BOTA5ODA2NTI2M15BMl5BanBnXkFtZTgwNTcxMzU1MDE@._V1_SX300.jpg",
+      "title": "Lego Marvel Super Heroes",
+      "type": "game",
+      "year": "2013",
+      "id": 21
     }
   ],
   "categories": [

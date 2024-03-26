@@ -1,0 +1,72 @@
+<div class="button">
+    <button (click)="onNoClick()" class="close-button">✕</button>
+</div>
+<div class="main-autorization">
+    <form class="form" [formGroup]="authForm" *ngIf="!isLogin">
+        <span>Вхід в кабінет</span>
+
+        <div class="form-group">
+            <mat-form-field color="primary" appearance="outline">
+                <input matInput placeholder="Ваш email" type="email" formControlName="email"
+                    class="input-authorization">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Пароль" type="password" formControlName="password">
+            </mat-form-field>
+        </div>
+        <button mat-flat-button color="accent" type="button" *ngIf="!isLogin" (click)="loginUser()" mat-dialog-close
+            class="login-button">Увійти в кабінет</button>
+        <button mat-button color="primary" class="txt2" (click)="changeIsLogin()">Не маєте акаунту?</button>
+    </form>
+
+
+    <form class="form" [formGroup]="regForm" *ngIf="isLogin">
+        <span>Зареєструватись</span>
+        <div class="row">
+            <div class="form-group">
+                <mat-form-field color="primary" appearance="outline">
+                    <input matInput placeholder="Ваше ім'я" type="text" formControlName="firstName"
+                        class="input-authorization">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Ваше прізвище" type="text" formControlName="lastName">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-group">
+            <mat-form-field color="primary" appearance="outline">
+                <input matInput placeholder="Ваш телефон" type="tel" formControlName="phoneNumber"
+                    class="input-authorization">
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Ваш email" type="email" formControlName="email">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <mat-form-field color="primary" appearance="outline">
+                    <input matInput placeholder="Пароль" type="password" formControlName="passwordReg"
+                        class="input-authorization">
+                </mat-form-field>
+                
+            </div>
+            <div class="form-group">
+                <mat-form-field color="primary" appearance="outline">
+                    <input matInput placeholder="Повторіть пароль" type="password" formControlName="passwordSecond"
+                        class="input-authorization">
+                </mat-form-field>
+                
+            </div>
+        </div>
+        <button mat-flat-button color="accent" type="button" (click)="registerUser()" mat-dialog-close
+            class="login-button">Зареєструватись</button>
+        <button mat-button color="primary" class="txt2" (click)="changeIsLogin()">Вже зареєстровані?
+            <b>Увійти</b></button>
+    </form>
+</div>

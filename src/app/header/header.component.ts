@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
 import { IProductResponse } from '../interfaces/posts.interface';
 import { OrderService } from '../services/order/order.service';
 import { AccountService } from '../services/account/account.service';
 import { ROLE } from '../constants/role.constante';
+import { AuthDialogComponent } from '../components/auth-dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +27,9 @@ export class HeaderComponent implements OnInit {
   public all: any;
   constructor(
     private orderService: OrderService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    public dialog: MatDialog
+
     ) { }
 
   ngOnInit(): void {
@@ -115,6 +120,17 @@ export class HeaderComponent implements OnInit {
   checkUpdatesUserLogin(): void {
     this.accountService.isUserLogin$.subscribe(() => {
       this.checkUserLogin();
+    })
+  }
+
+  openLoginDialog(): void {
+    this.dialog.open(AuthDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog',
+      autoFocus: false
+    }).afterClosed().subscribe(result => {
+      console.log(result);
+
     })
   }
 

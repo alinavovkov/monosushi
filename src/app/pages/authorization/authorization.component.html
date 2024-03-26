@@ -1,5 +1,6 @@
 <div class="main-autorization">
-    <form class="form" [formGroup]="authForm" (ngSubmit)="login()">
+    <span>Admin Login</span>
+    <form class="form" [formGroup]="authForm" (ngSubmit)="loginUser()">
         <div class="block">
             <input type="text" placeholder="Email" name="email" formControlName="email">
         </div>
