@@ -6,6 +6,7 @@ import { OrderService } from '../services/order/order.service';
 import { AccountService } from '../services/account/account.service';
 import { ROLE } from '../constants/role.constante';
 import { AuthDialogComponent } from '../components/auth-dialog/auth-dialog.component';
+import { CallDialogComponent } from '../components/call-dialog/call-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -127,6 +128,18 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(AuthDialogComponent, {
       backdropClass: 'dialog-back',
       panelClass: 'auth-dialog',
+      autoFocus: false
+    }).afterClosed().subscribe(result => {
+      console.log(result);
+
+    })
+  }
+
+  openCallDialog(): void {
+    console.log('hello')
+    this.dialog.open(CallDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'call-dialog',
       autoFocus: false
     }).afterClosed().subscribe(result => {
       console.log(result);

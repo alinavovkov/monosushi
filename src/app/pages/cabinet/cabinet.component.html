@@ -1,32 +1,17 @@
-<div class="col-lg-9 col-xl-5 cabinet-content">
-    <form class="form" id="user-edit-form">
-
-        <div class="form-group">
-            <div class="form-title title">
-                <i class="number-title"><b>1</b></i>
-                <h5>Особисті дані</h5>
-            </div>
-
-            <div class="row-personal-info">
-                <div class="first-name">
-                    <input type="text" class="input" name="first_name" placeholder="*Ваше ім'я" value=""
-                        required="">
-                </div>
-                <div class="second-name">
-                    <input type="text" class="input" name="last_name" placeholder="*Ваше прізвище" value=""
-                        required="">
-                </div>
-            </div>
-
-            <input class="input inputmask" name="phone" type="text" inputmode="numeric"
-                placeholder="*Ваш номер телефону" value="" required="">
-            <input type="email" name="email" class="input" placeholder="*Ваш емейл" value=""
-                required="">
-            <input type="text" class="input calendar birthday" name="birthday" placeholder="День народження"
-                autocomplete="off" value="">
-        </div>
-
-    </form>
+<main>
+  <div class="leftMenu">
+    <button [routerLink]="[ '/cabinet/personal-data' ]" class="menu-admin-button">Особисті дані</button>
+    <button [routerLink]="[ '/cabinet/order-history' ]" class="menu-admin-button">Історія замовлень</button>
+    <button [routerLink]="[ '/cabinet/change-password' ]" class="menu-admin-button">Зміна паролю</button>
     <button [routerLink]="[ '' ]" class="exit-button" (click)="logOut()">Вихід</button>
+  </div>
+  <div class="mainContent ">
 
-</div>
+    <router-outlet></router-outlet>
+  </div>
+
+</main>
+
+
+
+

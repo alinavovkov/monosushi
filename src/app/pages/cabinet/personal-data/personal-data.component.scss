@@ -1,0 +1,89 @@
+$font-main: Rotonda;
+$color-accent: #b5d8f7;
+$color-dark: #252525;
+$color-light: white;
+
+
+$primary-color: #99cde2;
+$secondary-color: #5d855d;
+$grey: grey;
+
+$transparent: transparent;
+$color_light_grey: rgb(206, 206, 206);
+
+* {
+  font-family: $font-main;
+}
+
+.form {
+  width: 100%;
+  padding: 0 5px 5px 25px;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  display: flex;
+  gap: 15px;
+}
+
+.form .form-title {
+  margin-bottom: 20px;
+}
+
+.title {
+  color: #252525;
+  font-weight: bold;
+}
+
+.form .input {
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  font-size: 16px;
+  height: 56px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  color: #252525;
+  line-height: 56px;
+  padding: 0 20px 0 23px;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+  text-overflow: ellipsis;
+}
+
+.row-personal-info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.first-name {
+  width: 45%;
+}
+
+.second-name {
+  width: 45%;
+
+}
+
+.exit-button {
+  width: 85px;
+  height: 45px;
+  //margin: 0 auto;
+  background-color: $color-accent;
+  color: $color-dark;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 30px;
+}
