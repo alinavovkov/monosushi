@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { productService } from '../../services/post.service';
 import { ProductService } from '../../services/product/product.service';
 import { CategoryService } from '../../services/category/category.service';
-
 import { IProductResponse, ICategoryResponse } from '../../interfaces/posts.interface';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -30,7 +28,6 @@ export class AdminProductsComponent implements OnInit {
     private fb: FormBuilder,
     private productService: ProductService,
     private categoryService: CategoryService,
-
     private storage: Storage,
     private toastr: ToastrService
 
@@ -73,7 +70,7 @@ export class AdminProductsComponent implements OnInit {
         category: this.adminCategories[0].id
       })
       console.log(this.adminCategories);
-      
+
     })
   }
 

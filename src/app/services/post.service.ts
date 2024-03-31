@@ -12,7 +12,7 @@ import {
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = `http://localhost:3000`;
+  public apiUrl = `http://localhost:3000`;
 
   constructor(
     private http: HttpClient
@@ -42,7 +42,7 @@ export class PostService {
     return this.http.patch<void>(`${this.apiUrl}/updateIDs`, { deletedIndex });
   }
 
- 
+
 
   // products
 //   getAllProducts(): Observable<IProductResponse[]> {

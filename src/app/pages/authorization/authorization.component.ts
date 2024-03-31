@@ -48,7 +48,7 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
     this.login(email, password).then(() => {
       this.toastr.success('User successfully login');
       console.log(password);
-      
+
     }).catch(e => {
       this.toastr.error(e.message);
     })
@@ -69,5 +69,5 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
       console.log('error', e);
     })
   }
-   
+
 }

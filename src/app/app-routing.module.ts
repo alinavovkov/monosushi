@@ -7,9 +7,8 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { CheckoutComponent } from './pages/checkout/checkout/checkout.component';
 import { MainComponent } from './main/main.component';
-import { AuthGuard } from './guards/auth/auth.guard';
+import { authGuard } from './guards/auth/auth.guard';
 import { ProductInfoResolver } from './services/product/product-info.resolver';
-import { CallDialogComponent } from './components/call-dialog/call-dialog.component';
 
 
 const routes: Routes = [
@@ -33,18 +32,16 @@ const routes: Routes = [
   },
   {
     path: 'cabinet',
-    canActivate: [AuthGuard],
+    canActivate: [authGuard],
     loadChildren: () => import('./pages/cabinet/cabinet.module').then(m => m.CabinetModule)
   },
   { path: 'checkout', component: CheckoutComponent },
   {
     path: 'admin',
-    canActivate: [AuthGuard],
+    canActivate: [authGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   { path: '', component: MainComponent },
-  // { path: 'call', component: CallDialogComponent }
-
 ];
 
 @NgModule({

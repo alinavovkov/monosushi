@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   public loginUrl = '';
   public loginPage = '';
 
-  private basket: Array<IProductResponse> = [];
+  public basket: Array<IProductResponse> = [];
   public all: any;
   constructor(
     private orderService: OrderService,
@@ -50,12 +50,16 @@ export class HeaderComponent implements OnInit {
     this.getTotalCount();
   }
 
+  // getTotalPrice(): void {
+  //   this.total = this.basket.reduce((total: number, prod: IProductResponse) => {
+  //     const productPrice = isNaN(prod.price) ? 0 : prod.price;
+  //     const productCount = isNaN(prod.count) ? 0 : prod.count;
+  //     return total + (productPrice * productCount);
+  //   }, 0);
+  // }
   getTotalPrice(): void {
-    this.total = this.basket.reduce((total: number, prod: IProductResponse) => {
-      const productPrice = isNaN(prod.price) ? 0 : prod.price;
-      const productCount = isNaN(prod.count) ? 0 : prod.count;
-      return total + (productPrice * productCount);
-    }, 0);
+    this.total = this.basket
+      .reduce((total: number, prod: IProductResponse) => total + prod.count * prod.price, 0);
   }
   getTotalCount(): void {
     this.totalCount = this.basket.reduce((total: number, prod: IProductResponse) => {
