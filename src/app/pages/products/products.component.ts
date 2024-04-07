@@ -18,7 +18,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+
   ) {
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -27,16 +28,36 @@ export class ProductsComponent implements OnInit, OnDestroy {
     })
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadProducts();
+    this.getProducts();
+  }
+  getProducts(): void {
+    this.productService.getAllFirebase().subscribe(data => {
+      this.productItems = data as IProductResponse[];
+      console.log(this.productItems);
+
+    })
+  }
+// doesnt work
+//   loadProducts(): void {
+//     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+//     this.productService.getAllByCategory(categoryName).subscribe(data => {
+//       this.productItems = data as IProductResponse[];
+//       console.log(this.productItems);
+//       console.log(categoryName)
+//     })
+//   }
 
   loadProducts(): void {
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
     this.productService.getAllByCategory(categoryName).subscribe(data => {
-      this.productItems = data;
-      
-    })
-    console.log(this.productItems);
+      this.productItems = data as IProductResponse[];
+      // console.log(this.productItems);
+      // console.log(categoryName);
+    });
   }
+
 
   isActive(category: string): boolean {
     const currentRoute = this.activatedRoute.snapshot.url[1]?.path;

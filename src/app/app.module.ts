@@ -12,7 +12,7 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
 import { CheckoutComponent } from './pages/checkout/checkout/checkout.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-import { getFirestore, provideFirestore} from '@angular/fire/firestore';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getMessaging, provideMessaging } from '@angular/fire/messaging';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { ToastrModule } from 'ngx-toastr';
@@ -41,7 +41,7 @@ import { CallDialogComponent } from './components/call-dialog/call-dialog.compon
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    provideFirebaseApp(() => initializeApp({"projectId":"monosushi-angular","appId":"1:635897202206:web:3dba2dae5d46ec31af500f","storageBucket":"monosushi-angular.appspot.com","apiKey":"AIzaSyDb88HVDgWheHbXqL-S26idZvVWXjKfqqA","authDomain":"monosushi-angular.firebaseapp.com","messagingSenderId":"635897202206"})),
+    provideFirebaseApp(() => initializeApp({ "projectId": "monosushi-angular", "appId": "1:635897202206:web:3dba2dae5d46ec31af500f", "storageBucket": "monosushi-angular.appspot.com", "apiKey": "AIzaSyDb88HVDgWheHbXqL-S26idZvVWXjKfqqA", "authDomain": "monosushi-angular.firebaseapp.com", "messagingSenderId": "635897202206" })),
     provideStorage(() => getStorage()),
     provideMessaging(() => getMessaging()),
     provideFirestore(() => getFirestore()),

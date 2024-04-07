@@ -1,5 +1,5 @@
 export interface IPost {
-  id: number;
+  id: number | string;
   date: Date;
   title: string;
   headline: string;
@@ -17,15 +17,8 @@ export interface IPostRequest {
 
 
 export interface IPostResponse extends IPostRequest {
-  id: number;
+  id: number | string;
 }
-
-// export interface ICategory {
-//   id: number;
-//   title: string;
-//   way: string;
-//   img: string;
-// }
 
 export interface ICategoryRequest {
   title: string;
@@ -35,18 +28,9 @@ export interface ICategoryRequest {
 
 
 export interface ICategoryResponse extends ICategoryRequest {
-  id: number;
+  id: number | string;
 }
 
-// export interface IProduct {
-//   id: number;
-//   category: ICategoryResponse;
-//   title: string;
-//   ingridients: string;
-//   weight: number;
-//   price: number;
-//   img: string;
-// }
 
 export interface IProductRequest {
   category: ICategoryResponse;
@@ -60,5 +44,5 @@ export interface IProductRequest {
 
 
 export interface IProductResponse extends IProductRequest {
-  id: number;
+  id: number | string;
 }

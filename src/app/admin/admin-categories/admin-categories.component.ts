@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { PostService } from '../../services/post.service';
 import { ICategoryResponse } from '../../interfaces/posts.interface';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,24 +11,20 @@ import { CategoryService } from '../../services/category/category.service';
   styleUrl: './admin-categories.component.scss'
 })
 export class AdminCategoriesComponent implements OnInit {
+
   public adminCategories: Array<ICategoryResponse> = [];
   public categoryForm!: FormGroup;
-
   public clickerSave!: boolean;
-  // public editID!: number;
   public clickerOpenForm!: boolean;
   public uploadPercent!: number;
   public isUploaded = false;
-  private currentCategoryId = 0;
-
+  private currentCategoryId!: number | string;
 
   constructor(
     private fb: FormBuilder,
-    private postService: PostService,
     private categoryService: CategoryService,
     private storage: Storage,
     private toastr: ToastrService
-
   ) { }
 
   ngOnInit(): void {
@@ -38,16 +33,11 @@ export class AdminCategoriesComponent implements OnInit {
   }
 
   initCategoryForm(): void {
-    // const now = new Date();
-    // const index = this.adminCategories.length;
-
     this.categoryForm = this.fb.group({
-      // id: index + 1,
       title: [null, Validators.required],
       way: [null, Validators.required],
       img: [null, Validators.required]
     });
-
   }
 
   openForm(): void {
@@ -55,52 +45,46 @@ export class AdminCategoriesComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.categoryService.getAllCategories().subscribe(data => {
-      this.adminCategories = data;
-      console.log(data);
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponse[];
+      console.log(this.adminCategories)
     })
   }
 
   addPost(): void {
     if (this.clickerSave) {
-      this.categoryService.updateCategories(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
+      this.categoryService.updateFirebase(this.categoryForm.value, this.currentCategoryId as string).then(() => {
         this.loadCategories();
         this.toastr.success('Category successfully updated');
-
       })
     } else {
-      this.categoryService.createCategory(this.categoryForm.value).subscribe(() => {
-        this.loadCategories();
+      this.categoryService.createFirebase(this.categoryForm.value).then(() => {
         this.toastr.success('Category successfully created');
       })
     }
-    // this.editStatus = false;
     this.clickerSave = false;
     this.categoryForm.reset();
     this.isUploaded = false;
     this.uploadPercent = 0;
-    console.log(this.adminCategories);
-    
   }
 
-  editPost(category: ICategoryResponse) {
-    // const index = this.adminCategories.indexOf(category);
+  editPost(category: ICategoryResponse): void {
     this.categoryForm.patchValue({
-      // id: category.id,
       title: category.title,
-      text: category.way,
+      way: category.way,
       img: category.img
     });
-
-    // this.editStatus = true;
     this.currentCategoryId = category.id;
     this.isUploaded = true;
-    // this.editID = category.id;
     this.clickerSave = true;
+    // this.categoryService.getOneFirebase(category.id as string).subscribe(data => {
+    //   console.log(data, 'firebase');
+    //   this.clickerSave = true;
+    // })
   }
 
   deletePost(category: ICategoryResponse): void {
-    this.categoryService.deleteCategory(category.id).subscribe(() => {
+    this.categoryService.deleteFirebase(category.id as string).then(() => {
       this.loadCategories();
       this.toastr.success('Category successfully deleted');
     })
@@ -139,7 +123,6 @@ export class AdminCategoriesComponent implements OnInit {
       console.log('wrong format');
     }
     return Promise.resolve(url);
-
   }
 
   deleteImage(): void {
@@ -153,6 +136,7 @@ export class AdminCategoriesComponent implements OnInit {
       })
     })
   }
+
   valueByControl(control: string): string {
     return this.categoryForm.get(control)?.value;
   }

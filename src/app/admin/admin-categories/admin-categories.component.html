@@ -2,30 +2,26 @@
     <button class="addDiscountForm" (click)="openForm()"> Додати категорію </button>
     <form class="form" *ngIf="clickerOpenForm" [formGroup]="categoryForm" (ngSubmit)="addPost()">
         <div class="block">
-            <input type="text" placeholder="Назва" name="title" formControlName="title" >
+            <input type="text" placeholder="Назва" name="title" formControlName="title" id="title">
         </div>
         <div class="block">
-            <input type="text" placeholder="Шлях" name="way" formControlName="way" >
+            <input type="text" placeholder="Шлях" name="way" formControlName="way" id="way">
         </div>
-        <!-- <div class="block">
-            <input type="text" placeholder="Опис" name="text" formControlName="text" >
-        </div> -->
         <ng-container *ngIf="!isUploaded">
             <div class="mb-3">
                 <label for="formFile" class="form-label">Default file input example</label>
                 <input class="form-control" type="file" id="formFile" (change)="upload($event)">
             </div>
             <div class="progress mb-3">
-                <div class="progress-bar progress-bar-striped" role="progressbar" 
-                [style.width.%]="uploadPercent" 
+                <div class="progress-bar progress-bar-striped" role="progressbar"
+                [style.width.%]="uploadPercent"
                 aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </ng-container>
         <ng-container *ngIf="isUploaded">
-            <img [src]="valueByControl('img')" alt="">
+            <img [src]="valueByControl('img')" alt="" id="img">
             <button type="button" class="btn btn-danger" (click)="deleteImage()">delete</button>
         </ng-container>
-        <!-- <span>{{ errorTxt }}</span> -->
         <button [disabled]="categoryForm.invalid"  type="submit" class="addPost">
             {{ clickerSave ? 'Зберегти зміни' : 'Додати' }}
         </button>
@@ -50,7 +46,7 @@
                 </td>
                 <td class="buttons-control">
                     <button class="button-edit" (click)="editPost(category)"> Редагувати </button>
-                    <button class="button-delete" (click)="deletePost(category)"> Видалити </button>
+                    <button [disabled]="clickerSave" class="button-delete" (click)="deletePost(category)"> Видалити </button>
                 </td>
             </tr>
         </tbody>

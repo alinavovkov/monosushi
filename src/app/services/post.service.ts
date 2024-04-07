@@ -6,41 +6,58 @@ import {
   ICategoryResponse, ICategoryRequest,
   IProductRequest, IProductResponse
 } from '../interfaces/posts.interface';
+import {
+  addDoc,
+  collectionData,
+  CollectionReference,
+  deleteDoc,
+  doc,
+  docData,
+  Firestore,
+  updateDoc
+} from "@angular/fire/firestore";
+import {collection, DocumentData} from "@firebase/firestore";
 // import {  } from '../interfaces/posts.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  public apiUrl = `http://localhost:3000`;
+  // public apiUrl = `http://localhost:3000`;
+  private discountsCollection!: CollectionReference<DocumentData>;
+
 
   constructor(
-    private http: HttpClient
-  ) { }
+    // private http: HttpClient
+    private afs: Firestore
 
-  getAll(): Observable<IPostResponse[]> {
-    return this.http.get<IPostResponse[]>(`${this.apiUrl}/posts`);
+  ) {
+    this.discountsCollection = collection(this.afs, 'discounts');
   }
 
-  getOne(id: number): Observable<IPostResponse> {
-    return this.http.get<IPostResponse>(`${this.apiUrl}/posts/${id}`);
-  }
-
-  create(post: IPostRequest): Observable<IPostResponse> {
-    return this.http.post<IPostResponse>(`${this.apiUrl}/posts`, post);
-  }
-
-  update(post: IPostRequest, id: number): Observable<IPostResponse> {
-    return this.http.patch<IPostResponse>(`${this.apiUrl}/posts/${id}`, post);
-  }
-
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/posts/${id}`);
-  }
-
-  updatePostIDs(deletedIndex: number): Observable<void> {
-    return this.http.patch<void>(`${this.apiUrl}/updateIDs`, { deletedIndex });
-  }
+  // getAll(): Observable<IPostResponse[]> {
+  //   return this.http.get<IPostResponse[]>(`${this.apiUrl}/posts`);
+  // }
+  //
+  // getOne(id: number): Observable<IPostResponse> {
+  //   return this.http.get<IPostResponse>(`${this.apiUrl}/posts/${id}`);
+  // }
+  //
+  // create(post: IPostRequest): Observable<IPostResponse> {
+  //   return this.http.post<IPostResponse>(`${this.apiUrl}/posts`, post);
+  // }
+  //
+  // update(post: IPostRequest, id: number): Observable<IPostResponse> {
+  //   return this.http.patch<IPostResponse>(`${this.apiUrl}/posts/${id}`, post);
+  // }
+  //
+  // delete(id: number): Observable<void> {
+  //   return this.http.delete<void>(`${this.apiUrl}/posts/${id}`);
+  // }
+  //
+  // updatePostIDs(deletedIndex: number): Observable<void> {
+  //   return this.http.patch<void>(`${this.apiUrl}/updateIDs`, { deletedIndex });
+  // }
 
 
 
@@ -68,4 +85,26 @@ export class PostService {
 //   updateProductIDs(deletedIndex: number): Observable<void> {
 //     return this.http.patch<void>(`${this.apiUrl}/products/updateIDs`, { deletedIndex });
 //   }
+  getAllFirebase() {
+    return collectionData(this.discountsCollection, { idField: 'id' });
+  }
+
+  getOneFirebase(id: string | number) {
+    const discountsDocumentReference = doc(this.afs, `discounts/${id}`);
+    return docData(discountsDocumentReference, { idField: 'id' });
+  }
+
+  createFirebase(discount: IPostRequest) {
+    return addDoc(this.discountsCollection, discount);
+  }
+
+  updateFirebase(discount: IPostRequest, id: string) {
+    const discountsDocumentReference = doc(this.afs, `discounts/${id}`);
+    return updateDoc(discountsDocumentReference, {...discount});
+  }
+
+  deleteFirebase(id: string) {
+    const discountsDocumentReference = doc(this.afs, `discounts/${id}`);
+    return deleteDoc(discountsDocumentReference);
+  }
 }

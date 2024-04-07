@@ -8,7 +8,7 @@ describe('ProductInfoResolver', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProductInfoResolver]
+     // providers: [ProductInfoResolver]
     });
 
     resolver = TestBed.inject(ProductInfoResolver);

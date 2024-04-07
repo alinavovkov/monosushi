@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProductResponse } from '../../interfaces/posts.interface';
-import { OrderService } from '../../services//order/order.service';
+import {IPostResponse, IProductResponse} from '../../interfaces/posts.interface';
+import { OrderService } from '../../services/order/order.service';
 import { ProductService } from '../../services/product/product.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ProductService } from '../../services/product/product.service';
   styleUrl: './product-info.component.scss'
 })
 export class ProductInfoComponent implements OnInit {
-  public currentProduct!: IProductResponse | undefined;
+  public currentProduct!: IProductResponse;
   public counter: number = 1;
 
   constructor(
@@ -22,13 +22,15 @@ export class ProductInfoComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(response => {
       this.currentProduct = response['productInfo'];
-    })
+    });
+    this.loadProduct();
   }
 
   loadProduct(): void {
-    const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.productService.getOne(id).subscribe(data => {
-      this.currentProduct = data;
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.productService.getOneFirebase(id as string).subscribe(data => {
+      this.currentProduct = data as IProductResponse;
+      console.log(data)
     })
   }
 

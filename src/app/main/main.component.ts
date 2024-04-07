@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../services/product/product.service'; 
+import { ProductService } from '../services/product/product.service';
 import { IProductResponse } from '../interfaces/posts.interface';
 
 @Component({
@@ -19,8 +19,10 @@ export class MainComponent implements OnInit{
   }
 
   getProducts(): void {
-    this.productService.getAll().subscribe(data => {
-      this.productItems = data;
+    this.productService.getAllFirebase().subscribe(data => {
+      this.productItems = data as IProductResponse[];
+      console.log(this.productItems.map(product => product.category.way))
+
     })
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
-import { IPostResponse } from '../../interfaces/posts.interface';
+import {IPost, IPostResponse} from '../../interfaces/posts.interface';
 
 @Component({
   selector: 'app-discounts',
@@ -20,8 +20,8 @@ export class DiscountsComponent implements  OnInit {
   }
 
   getPosts(): void {
-    this.postService.getAll().subscribe(data => {
-      this.postBlog = data;
+    this.postService.getAllFirebase().subscribe(data => {
+      this.postBlog = data as IPost[];
     })
   }
 }

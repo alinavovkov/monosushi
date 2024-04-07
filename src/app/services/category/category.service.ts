@@ -1,34 +1,72 @@
 import { Injectable } from '@angular/core';
-import { ICategoryResponse, ICategoryRequest } from '../../interfaces/posts.interface';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { ICategoryRequest } from '../../interfaces/posts.interface';
+import {
+  Firestore,
+  CollectionReference,
+  addDoc,
+  collectionData,
+  doc,
+  updateDoc,
+  deleteDoc, docData
+} from "@angular/fire/firestore";
+import { DocumentData, collection } from "@firebase/firestore"
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  apiUrl = `http://localhost:3000`;
-
-  constructor(private http: HttpClient) { }
-
-   getAllCategories(): Observable<ICategoryResponse[]> {
-    return this.http.get<ICategoryResponse[]>(`${this.apiUrl}/categories`);
+  // apiUrl = `http://localhost:3000`;
+  private categoryCollection!: CollectionReference<DocumentData>;
+  constructor(
+    // private http: HttpClient,
+    private afs: Firestore
+  ) {
+    this.categoryCollection = collection(this.afs, 'categories');
   }
 
-  createCategory(category: ICategoryRequest): Observable<ICategoryResponse> {
-    return this.http.post<ICategoryResponse>(`${this.apiUrl}/categories`, category);
+  //  getAllCategories(): Observable<ICategoryResponse[]> {
+  //   return this.http.get<ICategoryResponse[]>(`${this.apiUrl}/categories`);
+  // }
+  //
+  // createCategory(category: ICategoryRequest): Observable<ICategoryResponse> {
+  //   return this.http.post<ICategoryResponse>(`${this.apiUrl}/categories`, category);
+  // }
+  //
+  // updateCategories(category: ICategoryRequest, id: number): Observable<ICategoryResponse> {
+  //   return this.http.patch<ICategoryResponse>(`${this.apiUrl}/categories/${id}`, category);
+  // }
+  //
+  // deleteCategory(id: number): Observable<void> {
+  //   return this.http.delete<void>(`${this.apiUrl}/categories/${id}`);
+  // }
+  //
+  // updateCategoryIDs(deletedIndex: number): Observable<void> {
+  //   return this.http.patch<void>(`${this.apiUrl}/categories/updateIDs`, { deletedIndex });
+  // }
+
+  // -------------------------------------------------------------------
+
+  getAllFirebase() {
+    return collectionData(this.categoryCollection, { idField: 'id' });
   }
 
-  updateCategories(category: ICategoryRequest, id: number): Observable<ICategoryResponse> {
-    return this.http.patch<ICategoryResponse>(`${this.apiUrl}/categories/${id}`, category);
+  getOneFirebase(id: string) {
+    const categoryDocumentReference = doc(this.afs, `categories/${id}`);
+    return docData(categoryDocumentReference, { idField: 'id' });
   }
 
-  deleteCategory(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/categories/${id}`);
+  createFirebase(category: ICategoryRequest) {
+    return addDoc(this.categoryCollection, category);
   }
 
-  updateCategoryIDs(deletedIndex: number): Observable<void> {
-    return this.http.patch<void>(`${this.apiUrl}/categories/updateIDs`, { deletedIndex });
+  updateFirebase(category: ICategoryRequest, id: string) {
+    const categoryDocumentReference = doc(this.afs, `categories/${id}`);
+    return updateDoc(categoryDocumentReference, {...category});
+  }
+
+  deleteFirebase(id: string) {
+    const categoryDocumentReference = doc(this.afs, `categories/${id}`);
+    return deleteDoc(categoryDocumentReference);
   }
 }

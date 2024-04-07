@@ -29,15 +29,23 @@ export class RollsComponent implements OnInit, OnDestroy {
   }
 
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getProducts();
+
+  }
 
   loadProducts(): void {
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
     this.productService.getAllByCategory(categoryName).subscribe(data => {
-      this.productItems = data;
+      this.productItems = data as IProductResponse[];
     })
   }
 
+  getProducts(): void {
+    this.productService.getAllFirebase().subscribe(data => {
+      this.productItems = data as IProductResponse[];
+    })
+  }
   ngOnDestroy(): void {
     this.eventSubscription.unsubscribe();
   }

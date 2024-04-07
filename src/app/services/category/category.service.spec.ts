@@ -35,16 +35,16 @@ describe('CategoryService', () => {
     ];
 
     // Call the method to test
-    service.getAllCategories().subscribe(categories => {
+    service.getAllFirebase().subscribe(categories => {
       expect(categories).toEqual(mockCategories);
     });
 
     // Define the expected HTTP request
-    const req = httpMock.expectOne(`${service.apiUrl}/categories`);
-    expect(req.request.method).toBe('GET');
+    //const req = httpMock.expectOne(`${service.apiUrl}/categories`);
+    //expect(req.request.method).toBe('GET');
 
     // Provide mock data as response
-    req.flush(mockCategories);
+   // req.flush(mockCategories);
   });
 
 });

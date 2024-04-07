@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { PostService } from '../../services/post.service';
 import { IPost, IPostResponse, IPostRequest } from '../../interfaces/posts.interface';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
@@ -18,12 +19,13 @@ export class AdminDiscountsComponent implements OnInit {
   public clickerOpenForm!: boolean;
   public uploadPercent!: number;
   public isUploaded = false;
-  private currentCategoryId = 0;
+  private currentCategoryId!: number | string;
 
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
-    private storage: Storage
+    private storage: Storage,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -48,20 +50,24 @@ export class AdminDiscountsComponent implements OnInit {
   }
 
   loadDiscounts(): void {
-    this.postService.getAll().subscribe(data => {
-      this.adminDiscounts = data;
+    this.postService.getAllFirebase().subscribe(data => {
+      this.adminDiscounts = data as IPostResponse[];
       console.log(data);
     })
   }
 
   addPost(): void {
     if (this.clickerSave) {
-      this.postService.update(this.discountForm.value, this.currentCategoryId).subscribe(() => {
+      this.postService.updateFirebase(this.discountForm.value, this.currentCategoryId as string).then(() => {
         this.loadDiscounts();
+        this.toastr.success('Category successfully updated');
+
       })
     } else {
-      this.postService.create(this.discountForm.value).subscribe(() => {
-        this.loadDiscounts();
+      this.postService.createFirebase(this.discountForm.value).then(() => {
+        // this.loadDiscounts();
+        this.toastr.success('Category successfully created');
+
       })
     }
     // this.editStatus = false;
@@ -90,12 +96,17 @@ export class AdminDiscountsComponent implements OnInit {
   }
 
   deletePost(post: IPost): void {
-    const index = this.adminDiscounts.indexOf(post);
-    if (index !== -1) {
-      this.postService.delete(post.id).subscribe(() => {
-        this.loadDiscounts();
-      })
-    }
+    this.postService.deleteFirebase(post.id as string).then(() => {
+      this.loadDiscounts();
+      this.toastr.success('Category successfully deleted');
+    })
+
+    // const index = this.adminDiscounts.indexOf(post);
+    // if (index !== -1) {
+    //   this.postService.deleteFirebase(post.id).subscribe(() => {
+    //     this.loadDiscounts();
+    //   })
+    // }
   }
 
   upload(event: any): void {

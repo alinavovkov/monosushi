@@ -84,7 +84,7 @@ td {
 
 }
 
-// buttons 
+// buttons
 button {
     cursor: pointer;
 }
@@ -166,4 +166,14 @@ button {
     background-color: rgb(184, 194, 225);
     color: white;
     border: none;
+}
+
+#category {
+  width: 100px;
+  height: 40px;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px rgb(11, 121, 10) solid;
+  cursor: pointer;
 }

@@ -46,7 +46,7 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
   loginUser(): void {
     const { email, password } = this.authForm.value;
     this.login(email, password).then(() => {
-      this.toastr.success('User successfully login');
+      this.toastr.success('Admin successfully login');
       console.log(password);
 
     }).catch(e => {

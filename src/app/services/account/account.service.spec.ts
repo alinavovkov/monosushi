@@ -7,7 +7,10 @@ describe('AccountService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [
+          HttpClientTestingModule
+      ],
+      providers: [AccountService]
     });
     service = TestBed.inject(AccountService);
   });

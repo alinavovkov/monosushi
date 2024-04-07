@@ -18,11 +18,11 @@ export class AdminProductsComponent implements OnInit {
   public productForm!: FormGroup;
 
   public clickerSave!: boolean;
-  public editID!: number;
+  // public editID!: number;
   public clickerOpenForm!: boolean;
   public uploadPercent!: number;
   public isUploaded = false;
-  private currentCategoryId = 0;
+  private currentCategoryId!: number | string;
 
   constructor(
     private fb: FormBuilder,
@@ -41,7 +41,7 @@ export class AdminProductsComponent implements OnInit {
 
   initProductForm(): void {
     this.productForm = this.fb.group({
-      category: [null, Validators.required],
+      category: [this.adminCategories[0]],
       title: [null, Validators.required],
       ingridients: [null, Validators.required],
       weight: [null, Validators.required],
@@ -57,15 +57,15 @@ export class AdminProductsComponent implements OnInit {
   }
 
   loadProducts(): void {
-    this.productService.getAll().subscribe(data => {
-      this.adminProducts = data;
+    this.productService.getAllFirebase().subscribe(data => {
+      this.adminProducts = data as IProductResponse[];
       console.log(data);
     })
   }
 
   loadCategories(): void {
-    this.categoryService.getAllCategories().subscribe(data => {
-      this.adminCategories = data;
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponse[];
       this.productForm.patchValue({
         category: this.adminCategories[0].id
       })
@@ -76,14 +76,14 @@ export class AdminProductsComponent implements OnInit {
 
   addProduct(): void {
     if (this.clickerSave) {
-      this.productService.update(this.productForm.value, this.currentCategoryId).subscribe(() => {
+      this.productService.updateFirebase(this.productForm.value, this.currentCategoryId as string).then(() => {
         this.loadProducts();
         this.toastr.success('Product successfully updated');
 
       })
     } else {
-      this.productService.create(this.productForm.value).subscribe(() => {
-        this.loadProducts();
+      this.productService.createFirebase(this.productForm.value).then(() => {
+        // this.loadProducts();
         this.toastr.success('Product successfully created');
 
       })
@@ -109,12 +109,12 @@ export class AdminProductsComponent implements OnInit {
     // this.editStatus = true;
     this.currentCategoryId = product.id;
     this.isUploaded = true;
-    this.editID = product.id;
+    // this.editID = product.id;
     this.clickerSave = true;
   }
 
   deleteProduct(product: IProductResponse): void {
-    this.productService.delete(product.id).subscribe(() => {
+    this.productService.deleteFirebase(product.id as string).then(() => {
       this.loadProducts();
       this.toastr.success('Product successfully deleted');
     })

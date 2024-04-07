@@ -6,5 +6,6 @@ export const environment = {
         storageBucket: "monosushi-angular.appspot.com",
         messagingSenderId: "635897202206",
         appId: "1:635897202206:web:3dba2dae5d46ec31af500f"
-    }
+    },
+  production: false
 };
