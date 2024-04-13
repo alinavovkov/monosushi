@@ -75,11 +75,11 @@
             <div class="details-item-price">
               <span><b> {{product.price}} </b> грн</span>
               <div class="counting-items">
-                <button (click)="decrement()">-</button>
-                <span id="counter-value" class="counter-value">{{ counter }}</span>
-                <button (click)="increment()">+</button>
-              </div>
-              <button class="more-about-discount">Замовити</button>
+                <button (click)="productCount(product, false)" type="button">-</button>
+                <input type="number" [value]="product.count" class="counter-value">
+                <button (click)="productCount(product, true)" type="button">+</button>
+            </div>
+              <button class="more-about-discount" (click)="addToBasket(product)">Замовити</button>
             </div>
           </div>
         </div>

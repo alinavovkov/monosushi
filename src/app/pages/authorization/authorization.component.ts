@@ -43,31 +43,19 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
     })
   }
 
-  loginUser(): void {
+  async loginUser(): Promise<void> {
     const { email, password } = this.authForm.value;
-    this.login(email, password).then(() => {
-      this.toastr.success('Admin successfully login');
-      console.log(password);
-
-    }).catch(e => {
-      this.toastr.error(e.message);
-    })
-  }
-
-  async login(email: string, password: string): Promise<void> {
-    const credential = await signInWithEmailAndPassword(this.auth, email, password);
-    this.loginSubscription = docData(doc(this.afs, 'users', credential.user.uid)).subscribe(user => {
-      const currentUser = { ...user, uid: credential.user.uid };
-      localStorage.setItem('currentUser', JSON.stringify(currentUser));
-      if (user && user['role'] === ROLE.USER) {
-        this.router.navigate(['/cabinet']);
-      } else if (user && user['role'] === ROLE.ADMIN) {
+    try {
+      await this.accountService.login({ email, password });
+      const user = await this.accountService.getCurrentUser();
+      if (user && user['role'] === ROLE.ADMIN) {
         this.router.navigate(['/admin']);
       }
-      this.accountService.isUserLogin$.next(true);
-    }, (e) => {
-      console.log('error', e);
-    })
+      this.toastr.success('Admin successfully logged in');
+    } catch (error) {
+      console.error('Login error:', error);
+      this.toastr.error('Failed to login. Please try again.');
+    }
   }
 
 }

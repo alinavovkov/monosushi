@@ -37,7 +37,7 @@
                   <input type="number" [value]="product.count" class="counter-value">
                   <button (click)="productCount(product, true)" type="button">+</button>
               </div>
-                <button class="more-about-discount">Замовити</button>
+                <button class="more-about-discount" (click)="addToBasket(product)">Замовити</button>
               </div>
             </div>
           </div>

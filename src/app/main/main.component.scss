@@ -245,9 +245,11 @@ hr {
 }
 
 .counting-items {
-    height: 100%;
+    width: 150px;
+    height: 40px;
+      
     align-items: center;
-    border: 1px solid #dcdcdc;
+    border: 1px solid $grey;
     border-radius: 10px;
     color: #252525;
     font-size: 16px;
@@ -258,10 +260,15 @@ hr {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 5px;
 
     button {
         border: none;
         background-color: $transparent;
+    }
+    input {
+        width: 30%;
+        border: none;
     }
 }
 

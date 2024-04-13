@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     private accountService: AccountService,
     public dialog: MatDialog
 
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.loadBasket();
@@ -50,13 +50,6 @@ export class HeaderComponent implements OnInit {
     this.getTotalCount();
   }
 
-  // getTotalPrice(): void {
-  //   this.total = this.basket.reduce((total: number, prod: IProductResponse) => {
-  //     const productPrice = isNaN(prod.price) ? 0 : prod.price;
-  //     const productCount = isNaN(prod.count) ? 0 : prod.count;
-  //     return total + (productPrice * productCount);
-  //   }, 0);
-  // }
   getTotalPrice(): void {
     this.total = this.basket
       .reduce((total: number, prod: IProductResponse) => total + prod.count * prod.price, 0);

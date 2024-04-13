@@ -28,7 +28,7 @@ public all: any;
     const basketData = localStorage.getItem('basket');
     if (basketData) {
       this.basket = JSON.parse(basketData);
-      this.productItems = this.basket; // Assign parsed JSON array to productItems
+      this.productItems = this.basket; 
     }
     this.getTotalPrice();
     this.getTotalCount();
